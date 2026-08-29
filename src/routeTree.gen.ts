@@ -23,6 +23,7 @@ import { Route as SignupRouteImport } from './routes/signup'
 import { Route as SolutionsRouteImport } from './routes/solutions'
 import { Route as SystemWatchRouteImport } from './routes/system-watch'
 import { Route as DashboardIndexRouteImport } from './routes/dashboard.index'
+import { Route as DashboardLiveSupportRouteImport } from './routes/dashboard.live-support'
 import { Route as DashboardMessagesRouteImport } from './routes/dashboard.messages'
 import { Route as DashboardRequestsIndexRouteImport } from './routes/dashboard.requests.index'
 import { Route as DashboardRequestsRequestIdRouteImport } from './routes/dashboard.requests.$requestId'
@@ -97,6 +98,11 @@ const DashboardIndexRoute = DashboardIndexRouteImport.update({
   path: '/',
   getParentRoute: () => DashboardRoute,
 } as any)
+const DashboardLiveSupportRoute = DashboardLiveSupportRouteImport.update({
+  id: '/live-support',
+  path: '/live-support',
+  getParentRoute: () => DashboardRoute,
+} as any)
 const DashboardMessagesRoute = DashboardMessagesRouteImport.update({
   id: '/messages',
   path: '/messages',
@@ -128,6 +134,7 @@ export interface FileRoutesByFullPath {
   '/signup': typeof SignupRoute
   '/solutions': typeof SolutionsRoute
   '/system-watch': typeof SystemWatchRoute
+  '/dashboard/live-support': typeof DashboardLiveSupportRoute
   '/dashboard/messages': typeof DashboardMessagesRoute
   '/dashboard/': typeof DashboardIndexRoute
   '/dashboard/requests/$requestId': typeof DashboardRequestsRequestIdRoute
@@ -146,6 +153,7 @@ export interface FileRoutesByTo {
   '/signup': typeof SignupRoute
   '/solutions': typeof SolutionsRoute
   '/system-watch': typeof SystemWatchRoute
+  '/dashboard/live-support': typeof DashboardLiveSupportRoute
   '/dashboard/messages': typeof DashboardMessagesRoute
   '/dashboard': typeof DashboardIndexRoute
   '/dashboard/requests/$requestId': typeof DashboardRequestsRequestIdRoute
@@ -166,6 +174,7 @@ export interface FileRoutesById {
   '/signup': typeof SignupRoute
   '/solutions': typeof SolutionsRoute
   '/system-watch': typeof SystemWatchRoute
+  '/dashboard/live-support': typeof DashboardLiveSupportRoute
   '/dashboard/messages': typeof DashboardMessagesRoute
   '/dashboard/': typeof DashboardIndexRoute
   '/dashboard/requests/$requestId': typeof DashboardRequestsRequestIdRoute
@@ -187,6 +196,7 @@ export interface FileRouteTypes {
     | '/signup'
     | '/solutions'
     | '/system-watch'
+    | '/dashboard/live-support'
     | '/dashboard/messages'
     | '/dashboard/'
     | '/dashboard/requests/$requestId'
@@ -205,6 +215,7 @@ export interface FileRouteTypes {
     | '/signup'
     | '/solutions'
     | '/system-watch'
+    | '/dashboard/live-support'
     | '/dashboard/messages'
     | '/dashboard'
     | '/dashboard/requests/$requestId'
@@ -224,6 +235,7 @@ export interface FileRouteTypes {
     | '/signup'
     | '/solutions'
     | '/system-watch'
+    | '/dashboard/live-support'
     | '/dashboard/messages'
     | '/dashboard/'
     | '/dashboard/requests/$requestId'
@@ -346,6 +358,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardIndexRouteImport
       parentRoute: typeof DashboardRoute
     }
+    '/dashboard/live-support': {
+      id: '/dashboard/live-support'
+      path: '/live-support'
+      fullPath: '/dashboard/live-support'
+      preLoaderRoute: typeof DashboardLiveSupportRouteImport
+      parentRoute: typeof DashboardRoute
+    }
     '/dashboard/messages': {
       id: '/dashboard/messages'
       path: '/messages'
@@ -371,6 +390,7 @@ declare module '@tanstack/react-router' {
 }
 
 interface DashboardRouteChildren {
+  DashboardLiveSupportRoute: typeof DashboardLiveSupportRoute
   DashboardMessagesRoute: typeof DashboardMessagesRoute
   DashboardIndexRoute: typeof DashboardIndexRoute
   DashboardRequestsRequestIdRoute: typeof DashboardRequestsRequestIdRoute
@@ -378,6 +398,7 @@ interface DashboardRouteChildren {
 }
 
 const DashboardRouteChildren: DashboardRouteChildren = {
+  DashboardLiveSupportRoute: DashboardLiveSupportRoute,
   DashboardMessagesRoute: DashboardMessagesRoute,
   DashboardIndexRoute: DashboardIndexRoute,
   DashboardRequestsRequestIdRoute: DashboardRequestsRequestIdRoute,
