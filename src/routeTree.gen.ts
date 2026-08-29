@@ -10,33 +10,203 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as EnterpriseRouteImport } from './routes/enterprise'
+import { Route as GetStartedRouteImport } from './routes/get-started'
+import { Route as HowItWorksRouteImport } from './routes/how-it-works'
+import { Route as LiveSupportRouteImport } from './routes/live-support'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as ProvidersRouteImport } from './routes/providers'
+import { Route as ResourcesRouteImport } from './routes/resources'
+import { Route as SignupRouteImport } from './routes/signup'
+import { Route as SolutionsRouteImport } from './routes/solutions'
+import { Route as SystemWatchRouteImport } from './routes/system-watch'
+import { Route as DashboardIndexRouteImport } from './routes/dashboard.index'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnterpriseRoute = EnterpriseRouteImport.update({
+  id: '/enterprise',
+  path: '/enterprise',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GetStartedRoute = GetStartedRouteImport.update({
+  id: '/get-started',
+  path: '/get-started',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HowItWorksRoute = HowItWorksRouteImport.update({
+  id: '/how-it-works',
+  path: '/how-it-works',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LiveSupportRoute = LiveSupportRouteImport.update({
+  id: '/live-support',
+  path: '/live-support',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PricingRoute = PricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProvidersRoute = ProvidersRouteImport.update({
+  id: '/providers',
+  path: '/providers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResourcesRoute = ResourcesRouteImport.update({
+  id: '/resources',
+  path: '/resources',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SignupRoute = SignupRouteImport.update({
+  id: '/signup',
+  path: '/signup',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SolutionsRoute = SolutionsRouteImport.update({
+  id: '/solutions',
+  path: '/solutions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SystemWatchRoute = SystemWatchRouteImport.update({
+  id: '/system-watch',
+  path: '/system-watch',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardIndexRoute = DashboardIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => DashboardRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/dashboard': typeof DashboardRouteWithChildren
+  '/enterprise': typeof EnterpriseRoute
+  '/get-started': typeof GetStartedRoute
+  '/how-it-works': typeof HowItWorksRoute
+  '/live-support': typeof LiveSupportRoute
+  '/login': typeof LoginRoute
+  '/pricing': typeof PricingRoute
+  '/providers': typeof ProvidersRoute
+  '/resources': typeof ResourcesRoute
+  '/signup': typeof SignupRoute
+  '/solutions': typeof SolutionsRoute
+  '/system-watch': typeof SystemWatchRoute
+  '/dashboard/': typeof DashboardIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/enterprise': typeof EnterpriseRoute
+  '/get-started': typeof GetStartedRoute
+  '/how-it-works': typeof HowItWorksRoute
+  '/live-support': typeof LiveSupportRoute
+  '/login': typeof LoginRoute
+  '/pricing': typeof PricingRoute
+  '/providers': typeof ProvidersRoute
+  '/resources': typeof ResourcesRoute
+  '/signup': typeof SignupRoute
+  '/solutions': typeof SolutionsRoute
+  '/system-watch': typeof SystemWatchRoute
+  '/dashboard': typeof DashboardIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/dashboard': typeof DashboardRouteWithChildren
+  '/enterprise': typeof EnterpriseRoute
+  '/get-started': typeof GetStartedRoute
+  '/how-it-works': typeof HowItWorksRoute
+  '/live-support': typeof LiveSupportRoute
+  '/login': typeof LoginRoute
+  '/pricing': typeof PricingRoute
+  '/providers': typeof ProvidersRoute
+  '/resources': typeof ResourcesRoute
+  '/signup': typeof SignupRoute
+  '/solutions': typeof SolutionsRoute
+  '/system-watch': typeof SystemWatchRoute
+  '/dashboard/': typeof DashboardIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/dashboard'
+    | '/enterprise'
+    | '/get-started'
+    | '/how-it-works'
+    | '/live-support'
+    | '/login'
+    | '/pricing'
+    | '/providers'
+    | '/resources'
+    | '/signup'
+    | '/solutions'
+    | '/system-watch'
+    | '/dashboard/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/enterprise'
+    | '/get-started'
+    | '/how-it-works'
+    | '/live-support'
+    | '/login'
+    | '/pricing'
+    | '/providers'
+    | '/resources'
+    | '/signup'
+    | '/solutions'
+    | '/system-watch'
+    | '/dashboard'
+  id:
+    | '__root__'
+    | '/'
+    | '/dashboard'
+    | '/enterprise'
+    | '/get-started'
+    | '/how-it-works'
+    | '/live-support'
+    | '/login'
+    | '/pricing'
+    | '/providers'
+    | '/resources'
+    | '/signup'
+    | '/solutions'
+    | '/system-watch'
+    | '/dashboard/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DashboardRoute: typeof DashboardRouteWithChildren
+  EnterpriseRoute: typeof EnterpriseRoute
+  GetStartedRoute: typeof GetStartedRoute
+  HowItWorksRoute: typeof HowItWorksRoute
+  LiveSupportRoute: typeof LiveSupportRoute
+  LoginRoute: typeof LoginRoute
+  PricingRoute: typeof PricingRoute
+  ProvidersRoute: typeof ProvidersRoute
+  ResourcesRoute: typeof ResourcesRoute
+  SignupRoute: typeof SignupRoute
+  SolutionsRoute: typeof SolutionsRoute
+  SystemWatchRoute: typeof SystemWatchRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +218,126 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/enterprise': {
+      id: '/enterprise'
+      path: '/enterprise'
+      fullPath: '/enterprise'
+      preLoaderRoute: typeof EnterpriseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/get-started': {
+      id: '/get-started'
+      path: '/get-started'
+      fullPath: '/get-started'
+      preLoaderRoute: typeof GetStartedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/how-it-works': {
+      id: '/how-it-works'
+      path: '/how-it-works'
+      fullPath: '/how-it-works'
+      preLoaderRoute: typeof HowItWorksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/live-support': {
+      id: '/live-support'
+      path: '/live-support'
+      fullPath: '/live-support'
+      preLoaderRoute: typeof LiveSupportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pricing': {
+      id: '/pricing'
+      path: '/pricing'
+      fullPath: '/pricing'
+      preLoaderRoute: typeof PricingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/providers': {
+      id: '/providers'
+      path: '/providers'
+      fullPath: '/providers'
+      preLoaderRoute: typeof ProvidersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/resources': {
+      id: '/resources'
+      path: '/resources'
+      fullPath: '/resources'
+      preLoaderRoute: typeof ResourcesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/signup': {
+      id: '/signup'
+      path: '/signup'
+      fullPath: '/signup'
+      preLoaderRoute: typeof SignupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/solutions': {
+      id: '/solutions'
+      path: '/solutions'
+      fullPath: '/solutions'
+      preLoaderRoute: typeof SolutionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/system-watch': {
+      id: '/system-watch'
+      path: '/system-watch'
+      fullPath: '/system-watch'
+      preLoaderRoute: typeof SystemWatchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard/': {
+      id: '/dashboard/'
+      path: '/'
+      fullPath: '/dashboard/'
+      preLoaderRoute: typeof DashboardIndexRouteImport
+      parentRoute: typeof DashboardRoute
+    }
   }
 }
 
+interface DashboardRouteChildren {
+  DashboardIndexRoute: typeof DashboardIndexRoute
+}
+
+const DashboardRouteChildren: DashboardRouteChildren = {
+  DashboardIndexRoute: DashboardIndexRoute,
+}
+
+const DashboardRouteWithChildren = DashboardRoute._addFileChildren(
+  DashboardRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DashboardRoute: DashboardRouteWithChildren,
+  EnterpriseRoute: EnterpriseRoute,
+  GetStartedRoute: GetStartedRoute,
+  HowItWorksRoute: HowItWorksRoute,
+  LiveSupportRoute: LiveSupportRoute,
+  LoginRoute: LoginRoute,
+  PricingRoute: PricingRoute,
+  ProvidersRoute: ProvidersRoute,
+  ResourcesRoute: ResourcesRoute,
+  SignupRoute: SignupRoute,
+  SolutionsRoute: SolutionsRoute,
+  SystemWatchRoute: SystemWatchRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
