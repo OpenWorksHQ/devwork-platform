@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as EnterpriseRouteImport } from './routes/enterprise'
 import { Route as HowItWorksRouteImport } from './routes/how-it-works'
+import { Route as LiveSupportRouteImport } from './routes/live-support'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as ProvidersRouteImport } from './routes/providers'
 import { Route as ResourcesRouteImport } from './routes/resources'
@@ -30,6 +31,11 @@ const EnterpriseRoute = EnterpriseRouteImport.update({
 const HowItWorksRoute = HowItWorksRouteImport.update({
   id: '/how-it-works',
   path: '/how-it-works',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LiveSupportRoute = LiveSupportRouteImport.update({
+  id: '/live-support',
+  path: '/live-support',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PricingRoute = PricingRouteImport.update({
@@ -57,6 +63,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/enterprise': typeof EnterpriseRoute
   '/how-it-works': typeof HowItWorksRoute
+  '/live-support': typeof LiveSupportRoute
   '/pricing': typeof PricingRoute
   '/providers': typeof ProvidersRoute
   '/resources': typeof ResourcesRoute
@@ -66,6 +73,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/enterprise': typeof EnterpriseRoute
   '/how-it-works': typeof HowItWorksRoute
+  '/live-support': typeof LiveSupportRoute
   '/pricing': typeof PricingRoute
   '/providers': typeof ProvidersRoute
   '/resources': typeof ResourcesRoute
@@ -76,6 +84,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/enterprise': typeof EnterpriseRoute
   '/how-it-works': typeof HowItWorksRoute
+  '/live-support': typeof LiveSupportRoute
   '/pricing': typeof PricingRoute
   '/providers': typeof ProvidersRoute
   '/resources': typeof ResourcesRoute
@@ -87,6 +96,7 @@ export interface FileRouteTypes {
     | '/'
     | '/enterprise'
     | '/how-it-works'
+    | '/live-support'
     | '/pricing'
     | '/providers'
     | '/resources'
@@ -96,6 +106,7 @@ export interface FileRouteTypes {
     | '/'
     | '/enterprise'
     | '/how-it-works'
+    | '/live-support'
     | '/pricing'
     | '/providers'
     | '/resources'
@@ -105,6 +116,7 @@ export interface FileRouteTypes {
     | '/'
     | '/enterprise'
     | '/how-it-works'
+    | '/live-support'
     | '/pricing'
     | '/providers'
     | '/resources'
@@ -115,6 +127,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   EnterpriseRoute: typeof EnterpriseRoute
   HowItWorksRoute: typeof HowItWorksRoute
+  LiveSupportRoute: typeof LiveSupportRoute
   PricingRoute: typeof PricingRoute
   ProvidersRoute: typeof ProvidersRoute
   ResourcesRoute: typeof ResourcesRoute
@@ -142,6 +155,13 @@ declare module '@tanstack/react-router' {
       path: '/how-it-works'
       fullPath: '/how-it-works'
       preLoaderRoute: typeof HowItWorksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/live-support': {
+      id: '/live-support'
+      path: '/live-support'
+      fullPath: '/live-support'
+      preLoaderRoute: typeof LiveSupportRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/pricing': {
@@ -179,6 +199,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   EnterpriseRoute: EnterpriseRoute,
   HowItWorksRoute: HowItWorksRoute,
+  LiveSupportRoute: LiveSupportRoute,
   PricingRoute: PricingRoute,
   ProvidersRoute: ProvidersRoute,
   ResourcesRoute: ResourcesRoute,
