@@ -17,6 +17,7 @@ import { Route as LoginRouteImport } from './routes/login'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as ProvidersRouteImport } from './routes/providers'
 import { Route as ResourcesRouteImport } from './routes/resources'
+import { Route as SignupRouteImport } from './routes/signup'
 import { Route as SolutionsRouteImport } from './routes/solutions'
 import { Route as SystemWatchRouteImport } from './routes/system-watch'
 
@@ -60,6 +61,11 @@ const ResourcesRoute = ResourcesRouteImport.update({
   path: '/resources',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SignupRoute = SignupRouteImport.update({
+  id: '/signup',
+  path: '/signup',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SolutionsRoute = SolutionsRouteImport.update({
   id: '/solutions',
   path: '/solutions',
@@ -80,6 +86,7 @@ export interface FileRoutesByFullPath {
   '/pricing': typeof PricingRoute
   '/providers': typeof ProvidersRoute
   '/resources': typeof ResourcesRoute
+  '/signup': typeof SignupRoute
   '/solutions': typeof SolutionsRoute
   '/system-watch': typeof SystemWatchRoute
 }
@@ -92,6 +99,7 @@ export interface FileRoutesByTo {
   '/pricing': typeof PricingRoute
   '/providers': typeof ProvidersRoute
   '/resources': typeof ResourcesRoute
+  '/signup': typeof SignupRoute
   '/solutions': typeof SolutionsRoute
   '/system-watch': typeof SystemWatchRoute
 }
@@ -105,6 +113,7 @@ export interface FileRoutesById {
   '/pricing': typeof PricingRoute
   '/providers': typeof ProvidersRoute
   '/resources': typeof ResourcesRoute
+  '/signup': typeof SignupRoute
   '/solutions': typeof SolutionsRoute
   '/system-watch': typeof SystemWatchRoute
 }
@@ -119,6 +128,7 @@ export interface FileRouteTypes {
     | '/pricing'
     | '/providers'
     | '/resources'
+    | '/signup'
     | '/solutions'
     | '/system-watch'
   fileRoutesByTo: FileRoutesByTo
@@ -131,6 +141,7 @@ export interface FileRouteTypes {
     | '/pricing'
     | '/providers'
     | '/resources'
+    | '/signup'
     | '/solutions'
     | '/system-watch'
   id:
@@ -143,6 +154,7 @@ export interface FileRouteTypes {
     | '/pricing'
     | '/providers'
     | '/resources'
+    | '/signup'
     | '/solutions'
     | '/system-watch'
   fileRoutesById: FileRoutesById
@@ -156,6 +168,7 @@ export interface RootRouteChildren {
   PricingRoute: typeof PricingRoute
   ProvidersRoute: typeof ProvidersRoute
   ResourcesRoute: typeof ResourcesRoute
+  SignupRoute: typeof SignupRoute
   SolutionsRoute: typeof SolutionsRoute
   SystemWatchRoute: typeof SystemWatchRoute
 }
@@ -218,6 +231,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResourcesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/signup': {
+      id: '/signup'
+      path: '/signup'
+      fullPath: '/signup'
+      preLoaderRoute: typeof SignupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/solutions': {
       id: '/solutions'
       path: '/solutions'
@@ -244,6 +264,7 @@ const rootRouteChildren: RootRouteChildren = {
   PricingRoute: PricingRoute,
   ProvidersRoute: ProvidersRoute,
   ResourcesRoute: ResourcesRoute,
+  SignupRoute: SignupRoute,
   SolutionsRoute: SolutionsRoute,
   SystemWatchRoute: SystemWatchRoute,
 }
