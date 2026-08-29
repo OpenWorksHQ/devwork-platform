@@ -14,6 +14,7 @@ import { Route as EnterpriseRouteImport } from './routes/enterprise'
 import { Route as HowItWorksRouteImport } from './routes/how-it-works'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as ProvidersRouteImport } from './routes/providers'
+import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as SolutionsRouteImport } from './routes/solutions'
 
 const IndexRoute = IndexRouteImport.update({
@@ -41,6 +42,11 @@ const ProvidersRoute = ProvidersRouteImport.update({
   path: '/providers',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ResourcesRoute = ResourcesRouteImport.update({
+  id: '/resources',
+  path: '/resources',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SolutionsRoute = SolutionsRouteImport.update({
   id: '/solutions',
   path: '/solutions',
@@ -53,6 +59,7 @@ export interface FileRoutesByFullPath {
   '/how-it-works': typeof HowItWorksRoute
   '/pricing': typeof PricingRoute
   '/providers': typeof ProvidersRoute
+  '/resources': typeof ResourcesRoute
   '/solutions': typeof SolutionsRoute
 }
 export interface FileRoutesByTo {
@@ -61,6 +68,7 @@ export interface FileRoutesByTo {
   '/how-it-works': typeof HowItWorksRoute
   '/pricing': typeof PricingRoute
   '/providers': typeof ProvidersRoute
+  '/resources': typeof ResourcesRoute
   '/solutions': typeof SolutionsRoute
 }
 export interface FileRoutesById {
@@ -70,6 +78,7 @@ export interface FileRoutesById {
   '/how-it-works': typeof HowItWorksRoute
   '/pricing': typeof PricingRoute
   '/providers': typeof ProvidersRoute
+  '/resources': typeof ResourcesRoute
   '/solutions': typeof SolutionsRoute
 }
 export interface FileRouteTypes {
@@ -80,6 +89,7 @@ export interface FileRouteTypes {
     | '/how-it-works'
     | '/pricing'
     | '/providers'
+    | '/resources'
     | '/solutions'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -88,6 +98,7 @@ export interface FileRouteTypes {
     | '/how-it-works'
     | '/pricing'
     | '/providers'
+    | '/resources'
     | '/solutions'
   id:
     | '__root__'
@@ -96,6 +107,7 @@ export interface FileRouteTypes {
     | '/how-it-works'
     | '/pricing'
     | '/providers'
+    | '/resources'
     | '/solutions'
   fileRoutesById: FileRoutesById
 }
@@ -105,6 +117,7 @@ export interface RootRouteChildren {
   HowItWorksRoute: typeof HowItWorksRoute
   PricingRoute: typeof PricingRoute
   ProvidersRoute: typeof ProvidersRoute
+  ResourcesRoute: typeof ResourcesRoute
   SolutionsRoute: typeof SolutionsRoute
 }
 
@@ -145,6 +158,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProvidersRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/resources': {
+      id: '/resources'
+      path: '/resources'
+      fullPath: '/resources'
+      preLoaderRoute: typeof ResourcesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/solutions': {
       id: '/solutions'
       path: '/solutions'
@@ -161,6 +181,7 @@ const rootRouteChildren: RootRouteChildren = {
   HowItWorksRoute: HowItWorksRoute,
   PricingRoute: PricingRoute,
   ProvidersRoute: ProvidersRoute,
+  ResourcesRoute: ResourcesRoute,
   SolutionsRoute: SolutionsRoute,
 }
 export const routeTree = rootRouteImport
