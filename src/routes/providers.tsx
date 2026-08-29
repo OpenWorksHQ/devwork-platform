@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, BadgeCheck, ChevronRight, Lock } from "lucide-react";
 import { PageHero, SiteLayout } from "@/components/dw/SiteLayout";
 import { btnClass, BtnLink, SectionHeading } from "@/components/dw/ui";
