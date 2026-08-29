@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as EnterpriseRouteImport } from './routes/enterprise'
 import { Route as HowItWorksRouteImport } from './routes/how-it-works'
 import { Route as LiveSupportRouteImport } from './routes/live-support'
+import { Route as LoginRouteImport } from './routes/login'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as ProvidersRouteImport } from './routes/providers'
 import { Route as ResourcesRouteImport } from './routes/resources'
@@ -37,6 +38,11 @@ const HowItWorksRoute = HowItWorksRouteImport.update({
 const LiveSupportRoute = LiveSupportRouteImport.update({
   id: '/live-support',
   path: '/live-support',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PricingRoute = PricingRouteImport.update({
@@ -70,6 +76,7 @@ export interface FileRoutesByFullPath {
   '/enterprise': typeof EnterpriseRoute
   '/how-it-works': typeof HowItWorksRoute
   '/live-support': typeof LiveSupportRoute
+  '/login': typeof LoginRoute
   '/pricing': typeof PricingRoute
   '/providers': typeof ProvidersRoute
   '/resources': typeof ResourcesRoute
@@ -81,6 +88,7 @@ export interface FileRoutesByTo {
   '/enterprise': typeof EnterpriseRoute
   '/how-it-works': typeof HowItWorksRoute
   '/live-support': typeof LiveSupportRoute
+  '/login': typeof LoginRoute
   '/pricing': typeof PricingRoute
   '/providers': typeof ProvidersRoute
   '/resources': typeof ResourcesRoute
@@ -93,6 +101,7 @@ export interface FileRoutesById {
   '/enterprise': typeof EnterpriseRoute
   '/how-it-works': typeof HowItWorksRoute
   '/live-support': typeof LiveSupportRoute
+  '/login': typeof LoginRoute
   '/pricing': typeof PricingRoute
   '/providers': typeof ProvidersRoute
   '/resources': typeof ResourcesRoute
@@ -106,6 +115,7 @@ export interface FileRouteTypes {
     | '/enterprise'
     | '/how-it-works'
     | '/live-support'
+    | '/login'
     | '/pricing'
     | '/providers'
     | '/resources'
@@ -117,6 +127,7 @@ export interface FileRouteTypes {
     | '/enterprise'
     | '/how-it-works'
     | '/live-support'
+    | '/login'
     | '/pricing'
     | '/providers'
     | '/resources'
@@ -128,6 +139,7 @@ export interface FileRouteTypes {
     | '/enterprise'
     | '/how-it-works'
     | '/live-support'
+    | '/login'
     | '/pricing'
     | '/providers'
     | '/resources'
@@ -140,6 +152,7 @@ export interface RootRouteChildren {
   EnterpriseRoute: typeof EnterpriseRoute
   HowItWorksRoute: typeof HowItWorksRoute
   LiveSupportRoute: typeof LiveSupportRoute
+  LoginRoute: typeof LoginRoute
   PricingRoute: typeof PricingRoute
   ProvidersRoute: typeof ProvidersRoute
   ResourcesRoute: typeof ResourcesRoute
@@ -175,6 +188,13 @@ declare module '@tanstack/react-router' {
       path: '/live-support'
       fullPath: '/live-support'
       preLoaderRoute: typeof LiveSupportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/pricing': {
@@ -220,6 +240,7 @@ const rootRouteChildren: RootRouteChildren = {
   EnterpriseRoute: EnterpriseRoute,
   HowItWorksRoute: HowItWorksRoute,
   LiveSupportRoute: LiveSupportRoute,
+  LoginRoute: LoginRoute,
   PricingRoute: PricingRoute,
   ProvidersRoute: ProvidersRoute,
   ResourcesRoute: ResourcesRoute,
