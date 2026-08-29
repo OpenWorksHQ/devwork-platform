@@ -175,9 +175,12 @@ function DevMode() {
                 <p className="text-[13.5px] font-medium">Open categories</p>
                 <div className="mt-3 flex flex-wrap gap-2">
                   {["Ecommerce", "Web", "APIs", "Databases", "IT support"].map((c) => (
-                    <Chip key={c} tone="dark">
+                    <span
+                      key={c}
+                      className="rounded-full border border-ink-border px-3 py-1 text-[12px] text-white/75"
+                    >
                       {c}
-                    </Chip>
+                    </span>
                   ))}
                 </div>
               </div>
@@ -185,9 +188,12 @@ function DevMode() {
                 <p className="text-[13.5px] font-medium">Restricted / coverage-dependent</p>
                 <div className="mt-3 flex flex-wrap gap-2">
                   {["Security testing", "Enterprise capacity", "Embedded / hardware", "Robotics"].map((c) => (
-                    <Chip key={c} tone="dark">
+                    <span
+                      key={c}
+                      className="rounded-full border border-ink-border px-3 py-1 text-[12px] text-white/75"
+                    >
                       {c}
-                    </Chip>
+                    </span>
                   ))}
                 </div>
                 <p className="mt-3 text-[12px] leading-[1.55] text-white/55">

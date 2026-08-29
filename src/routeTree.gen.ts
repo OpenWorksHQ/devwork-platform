@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as DevmodeRouteImport } from './routes/devmode'
 import { Route as EnterpriseRouteImport } from './routes/enterprise'
 import { Route as GetStartedRouteImport } from './routes/get-started'
 import { Route as HowItWorksRouteImport } from './routes/how-it-works'
@@ -44,6 +45,11 @@ const IndexRoute = IndexRouteImport.update({
 const DashboardRoute = DashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DevmodeRoute = DevmodeRouteImport.update({
+  id: '/devmode',
+  path: '/devmode',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EnterpriseRoute = EnterpriseRouteImport.update({
@@ -171,6 +177,7 @@ const DashboardRequestsRequestIdRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/dashboard': typeof DashboardRouteWithChildren
+  '/devmode': typeof DevmodeRoute
   '/enterprise': typeof EnterpriseRoute
   '/get-started': typeof GetStartedRoute
   '/how-it-works': typeof HowItWorksRoute
@@ -198,6 +205,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/devmode': typeof DevmodeRoute
   '/enterprise': typeof EnterpriseRoute
   '/get-started': typeof GetStartedRoute
   '/how-it-works': typeof HowItWorksRoute
@@ -226,6 +234,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/dashboard': typeof DashboardRouteWithChildren
+  '/devmode': typeof DevmodeRoute
   '/enterprise': typeof EnterpriseRoute
   '/get-started': typeof GetStartedRoute
   '/how-it-works': typeof HowItWorksRoute
@@ -256,6 +265,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/dashboard'
+    | '/devmode'
     | '/enterprise'
     | '/get-started'
     | '/how-it-works'
@@ -283,6 +293,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/devmode'
     | '/enterprise'
     | '/get-started'
     | '/how-it-works'
@@ -310,6 +321,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/dashboard'
+    | '/devmode'
     | '/enterprise'
     | '/get-started'
     | '/how-it-works'
@@ -339,6 +351,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DashboardRoute: typeof DashboardRouteWithChildren
+  DevmodeRoute: typeof DevmodeRoute
   EnterpriseRoute: typeof EnterpriseRoute
   GetStartedRoute: typeof GetStartedRoute
   HowItWorksRoute: typeof HowItWorksRoute
@@ -367,6 +380,13 @@ declare module '@tanstack/react-router' {
       path: '/dashboard'
       fullPath: '/dashboard'
       preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/devmode': {
+      id: '/devmode'
+      path: '/devmode'
+      fullPath: '/devmode'
+      preLoaderRoute: typeof DevmodeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/enterprise': {
@@ -587,6 +607,7 @@ const ProviderRouteWithChildren = ProviderRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DashboardRoute: DashboardRouteWithChildren,
+  DevmodeRoute: DevmodeRoute,
   EnterpriseRoute: EnterpriseRoute,
   GetStartedRoute: GetStartedRoute,
   HowItWorksRoute: HowItWorksRoute,
