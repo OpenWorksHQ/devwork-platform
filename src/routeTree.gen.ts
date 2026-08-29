@@ -29,6 +29,7 @@ import { Route as DashboardLiveSupportRouteImport } from './routes/dashboard.liv
 import { Route as DashboardMessagesRouteImport } from './routes/dashboard.messages'
 import { Route as DashboardSystemWatchRouteImport } from './routes/dashboard.system-watch'
 import { Route as ProviderIndexRouteImport } from './routes/provider.index'
+import { Route as ProviderOpportunitiesRouteImport } from './routes/provider.opportunities'
 import { Route as DashboardRequestsIndexRouteImport } from './routes/dashboard.requests.index'
 import { Route as DashboardRequestsRequestIdRouteImport } from './routes/dashboard.requests.$requestId'
 
@@ -132,6 +133,11 @@ const ProviderIndexRoute = ProviderIndexRouteImport.update({
   path: '/',
   getParentRoute: () => ProviderRoute,
 } as any)
+const ProviderOpportunitiesRoute = ProviderOpportunitiesRouteImport.update({
+  id: '/opportunities',
+  path: '/opportunities',
+  getParentRoute: () => ProviderRoute,
+} as any)
 const DashboardRequestsIndexRoute = DashboardRequestsIndexRouteImport.update({
   id: '/requests/',
   path: '/requests/',
@@ -163,6 +169,7 @@ export interface FileRoutesByFullPath {
   '/dashboard/live-support': typeof DashboardLiveSupportRoute
   '/dashboard/messages': typeof DashboardMessagesRoute
   '/dashboard/system-watch': typeof DashboardSystemWatchRoute
+  '/provider/opportunities': typeof ProviderOpportunitiesRoute
   '/dashboard/': typeof DashboardIndexRoute
   '/provider/': typeof ProviderIndexRoute
   '/dashboard/requests/$requestId': typeof DashboardRequestsRequestIdRoute
@@ -185,6 +192,7 @@ export interface FileRoutesByTo {
   '/dashboard/live-support': typeof DashboardLiveSupportRoute
   '/dashboard/messages': typeof DashboardMessagesRoute
   '/dashboard/system-watch': typeof DashboardSystemWatchRoute
+  '/provider/opportunities': typeof ProviderOpportunitiesRoute
   '/dashboard': typeof DashboardIndexRoute
   '/provider': typeof ProviderIndexRoute
   '/dashboard/requests/$requestId': typeof DashboardRequestsRequestIdRoute
@@ -210,6 +218,7 @@ export interface FileRoutesById {
   '/dashboard/live-support': typeof DashboardLiveSupportRoute
   '/dashboard/messages': typeof DashboardMessagesRoute
   '/dashboard/system-watch': typeof DashboardSystemWatchRoute
+  '/provider/opportunities': typeof ProviderOpportunitiesRoute
   '/dashboard/': typeof DashboardIndexRoute
   '/provider/': typeof ProviderIndexRoute
   '/dashboard/requests/$requestId': typeof DashboardRequestsRequestIdRoute
@@ -236,6 +245,7 @@ export interface FileRouteTypes {
     | '/dashboard/live-support'
     | '/dashboard/messages'
     | '/dashboard/system-watch'
+    | '/provider/opportunities'
     | '/dashboard/'
     | '/provider/'
     | '/dashboard/requests/$requestId'
@@ -258,6 +268,7 @@ export interface FileRouteTypes {
     | '/dashboard/live-support'
     | '/dashboard/messages'
     | '/dashboard/system-watch'
+    | '/provider/opportunities'
     | '/dashboard'
     | '/provider'
     | '/dashboard/requests/$requestId'
@@ -282,6 +293,7 @@ export interface FileRouteTypes {
     | '/dashboard/live-support'
     | '/dashboard/messages'
     | '/dashboard/system-watch'
+    | '/provider/opportunities'
     | '/dashboard/'
     | '/provider/'
     | '/dashboard/requests/$requestId'
@@ -447,6 +459,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProviderIndexRouteImport
       parentRoute: typeof ProviderRoute
     }
+    '/provider/opportunities': {
+      id: '/provider/opportunities'
+      path: '/opportunities'
+      fullPath: '/provider/opportunities'
+      preLoaderRoute: typeof ProviderOpportunitiesRouteImport
+      parentRoute: typeof ProviderRoute
+    }
     '/dashboard/requests/': {
       id: '/dashboard/requests/'
       path: '/requests'
@@ -489,10 +508,12 @@ const DashboardRouteWithChildren = DashboardRoute._addFileChildren(
 )
 
 interface ProviderRouteChildren {
+  ProviderOpportunitiesRoute: typeof ProviderOpportunitiesRoute
   ProviderIndexRoute: typeof ProviderIndexRoute
 }
 
 const ProviderRouteChildren: ProviderRouteChildren = {
+  ProviderOpportunitiesRoute: ProviderOpportunitiesRoute,
   ProviderIndexRoute: ProviderIndexRoute,
 }
 
