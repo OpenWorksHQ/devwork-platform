@@ -102,7 +102,7 @@ const PRODUCTS = [
 ];
 
 function Home() {
-  const req = REQUESTS[0];
+  const req = REQUESTS[0]!;
 
   return (
     <SiteLayout>
