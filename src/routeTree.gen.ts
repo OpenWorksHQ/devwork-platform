@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as EnterpriseRouteImport } from './routes/enterprise'
+import { Route as GetStartedRouteImport } from './routes/get-started'
 import { Route as HowItWorksRouteImport } from './routes/how-it-works'
 import { Route as LiveSupportRouteImport } from './routes/live-support'
 import { Route as LoginRouteImport } from './routes/login'
@@ -29,6 +30,11 @@ const IndexRoute = IndexRouteImport.update({
 const EnterpriseRoute = EnterpriseRouteImport.update({
   id: '/enterprise',
   path: '/enterprise',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GetStartedRoute = GetStartedRouteImport.update({
+  id: '/get-started',
+  path: '/get-started',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HowItWorksRoute = HowItWorksRouteImport.update({
@@ -80,6 +86,7 @@ const SystemWatchRoute = SystemWatchRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/enterprise': typeof EnterpriseRoute
+  '/get-started': typeof GetStartedRoute
   '/how-it-works': typeof HowItWorksRoute
   '/live-support': typeof LiveSupportRoute
   '/login': typeof LoginRoute
@@ -93,6 +100,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/enterprise': typeof EnterpriseRoute
+  '/get-started': typeof GetStartedRoute
   '/how-it-works': typeof HowItWorksRoute
   '/live-support': typeof LiveSupportRoute
   '/login': typeof LoginRoute
@@ -107,6 +115,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/enterprise': typeof EnterpriseRoute
+  '/get-started': typeof GetStartedRoute
   '/how-it-works': typeof HowItWorksRoute
   '/live-support': typeof LiveSupportRoute
   '/login': typeof LoginRoute
@@ -122,6 +131,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/enterprise'
+    | '/get-started'
     | '/how-it-works'
     | '/live-support'
     | '/login'
@@ -135,6 +145,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/enterprise'
+    | '/get-started'
     | '/how-it-works'
     | '/live-support'
     | '/login'
@@ -148,6 +159,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/enterprise'
+    | '/get-started'
     | '/how-it-works'
     | '/live-support'
     | '/login'
@@ -162,6 +174,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   EnterpriseRoute: typeof EnterpriseRoute
+  GetStartedRoute: typeof GetStartedRoute
   HowItWorksRoute: typeof HowItWorksRoute
   LiveSupportRoute: typeof LiveSupportRoute
   LoginRoute: typeof LoginRoute
@@ -187,6 +200,13 @@ declare module '@tanstack/react-router' {
       path: '/enterprise'
       fullPath: '/enterprise'
       preLoaderRoute: typeof EnterpriseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/get-started': {
+      id: '/get-started'
+      path: '/get-started'
+      fullPath: '/get-started'
+      preLoaderRoute: typeof GetStartedRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/how-it-works': {
@@ -258,6 +278,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   EnterpriseRoute: EnterpriseRoute,
+  GetStartedRoute: GetStartedRoute,
   HowItWorksRoute: HowItWorksRoute,
   LiveSupportRoute: LiveSupportRoute,
   LoginRoute: LoginRoute,
