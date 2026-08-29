@@ -7,7 +7,7 @@ import { Btn, Chip, MetaRow, Panel } from "@/components/dw/ui";
 import { PROVIDER_LEVELS } from "@/lib/devwork-data";
 
 export const Route = createFileRoute("/provider/profile")({
-  component: Profile;
+  component: Profile,
 });
 
 const CATEGORIES = [
