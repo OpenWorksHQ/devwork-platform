@@ -45,7 +45,7 @@ export function SiteHeader() {
             </BtnLink>
           ) : (
             <>
-              <BtnLink to="/login" search={{ type: undefined }} variant="inkOutline" size="sm">
+              <Link to="/login" search={{ type: undefined }} className={btnClass("inkOutline", "sm")}>
                 Log in
               </BtnLink>
               <BtnLink to="/get-started" variant="white" size="sm">
@@ -78,7 +78,7 @@ export function SiteHeader() {
               </Link>
             ))}
             <div className="mt-3 grid grid-cols-2 gap-2">
-              <BtnLink to="/login" search={{ type: undefined }} variant="inkOutline" size="sm" onClick={() => setOpen(false)}>
+              <Link to="/login" search={{ type: undefined }} className={btnClass("inkOutline", "sm")} onClick={() => setOpen(false)}>
                 Log in
               </BtnLink>
               <BtnLink to="/get-started" variant="white" size="sm" onClick={() => setOpen(false)}>
