@@ -30,6 +30,7 @@ import { Route as DashboardMessagesRouteImport } from './routes/dashboard.messag
 import { Route as DashboardSystemWatchRouteImport } from './routes/dashboard.system-watch'
 import { Route as ProviderIndexRouteImport } from './routes/provider.index'
 import { Route as ProviderAssignmentsRouteImport } from './routes/provider.assignments'
+import { Route as ProviderEarningsRouteImport } from './routes/provider.earnings'
 import { Route as ProviderOpportunitiesRouteImport } from './routes/provider.opportunities'
 import { Route as DashboardRequestsIndexRouteImport } from './routes/dashboard.requests.index'
 import { Route as DashboardRequestsRequestIdRouteImport } from './routes/dashboard.requests.$requestId'
@@ -139,6 +140,11 @@ const ProviderAssignmentsRoute = ProviderAssignmentsRouteImport.update({
   path: '/assignments',
   getParentRoute: () => ProviderRoute,
 } as any)
+const ProviderEarningsRoute = ProviderEarningsRouteImport.update({
+  id: '/earnings',
+  path: '/earnings',
+  getParentRoute: () => ProviderRoute,
+} as any)
 const ProviderOpportunitiesRoute = ProviderOpportunitiesRouteImport.update({
   id: '/opportunities',
   path: '/opportunities',
@@ -176,6 +182,7 @@ export interface FileRoutesByFullPath {
   '/dashboard/messages': typeof DashboardMessagesRoute
   '/dashboard/system-watch': typeof DashboardSystemWatchRoute
   '/provider/assignments': typeof ProviderAssignmentsRoute
+  '/provider/earnings': typeof ProviderEarningsRoute
   '/provider/opportunities': typeof ProviderOpportunitiesRoute
   '/dashboard/': typeof DashboardIndexRoute
   '/provider/': typeof ProviderIndexRoute
@@ -200,6 +207,7 @@ export interface FileRoutesByTo {
   '/dashboard/messages': typeof DashboardMessagesRoute
   '/dashboard/system-watch': typeof DashboardSystemWatchRoute
   '/provider/assignments': typeof ProviderAssignmentsRoute
+  '/provider/earnings': typeof ProviderEarningsRoute
   '/provider/opportunities': typeof ProviderOpportunitiesRoute
   '/dashboard': typeof DashboardIndexRoute
   '/provider': typeof ProviderIndexRoute
@@ -227,6 +235,7 @@ export interface FileRoutesById {
   '/dashboard/messages': typeof DashboardMessagesRoute
   '/dashboard/system-watch': typeof DashboardSystemWatchRoute
   '/provider/assignments': typeof ProviderAssignmentsRoute
+  '/provider/earnings': typeof ProviderEarningsRoute
   '/provider/opportunities': typeof ProviderOpportunitiesRoute
   '/dashboard/': typeof DashboardIndexRoute
   '/provider/': typeof ProviderIndexRoute
@@ -255,6 +264,7 @@ export interface FileRouteTypes {
     | '/dashboard/messages'
     | '/dashboard/system-watch'
     | '/provider/assignments'
+    | '/provider/earnings'
     | '/provider/opportunities'
     | '/dashboard/'
     | '/provider/'
@@ -279,6 +289,7 @@ export interface FileRouteTypes {
     | '/dashboard/messages'
     | '/dashboard/system-watch'
     | '/provider/assignments'
+    | '/provider/earnings'
     | '/provider/opportunities'
     | '/dashboard'
     | '/provider'
@@ -305,6 +316,7 @@ export interface FileRouteTypes {
     | '/dashboard/messages'
     | '/dashboard/system-watch'
     | '/provider/assignments'
+    | '/provider/earnings'
     | '/provider/opportunities'
     | '/dashboard/'
     | '/provider/'
@@ -478,6 +490,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProviderAssignmentsRouteImport
       parentRoute: typeof ProviderRoute
     }
+    '/provider/earnings': {
+      id: '/provider/earnings'
+      path: '/earnings'
+      fullPath: '/provider/earnings'
+      preLoaderRoute: typeof ProviderEarningsRouteImport
+      parentRoute: typeof ProviderRoute
+    }
     '/provider/opportunities': {
       id: '/provider/opportunities'
       path: '/opportunities'
@@ -528,12 +547,14 @@ const DashboardRouteWithChildren = DashboardRoute._addFileChildren(
 
 interface ProviderRouteChildren {
   ProviderAssignmentsRoute: typeof ProviderAssignmentsRoute
+  ProviderEarningsRoute: typeof ProviderEarningsRoute
   ProviderOpportunitiesRoute: typeof ProviderOpportunitiesRoute
   ProviderIndexRoute: typeof ProviderIndexRoute
 }
 
 const ProviderRouteChildren: ProviderRouteChildren = {
   ProviderAssignmentsRoute: ProviderAssignmentsRoute,
+  ProviderEarningsRoute: ProviderEarningsRoute,
   ProviderOpportunitiesRoute: ProviderOpportunitiesRoute,
   ProviderIndexRoute: ProviderIndexRoute,
 }
