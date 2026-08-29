@@ -17,6 +17,7 @@ import { Route as HowItWorksRouteImport } from './routes/how-it-works'
 import { Route as LiveSupportRouteImport } from './routes/live-support'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as ProviderRouteImport } from './routes/provider'
 import { Route as ProvidersRouteImport } from './routes/providers'
 import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as SignupRouteImport } from './routes/signup'
@@ -68,6 +69,11 @@ const LoginRoute = LoginRouteImport.update({
 const PricingRoute = PricingRouteImport.update({
   id: '/pricing',
   path: '/pricing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProviderRoute = ProviderRouteImport.update({
+  id: '/provider',
+  path: '/provider',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProvidersRoute = ProvidersRouteImport.update({
@@ -141,6 +147,7 @@ export interface FileRoutesByFullPath {
   '/live-support': typeof LiveSupportRoute
   '/login': typeof LoginRoute
   '/pricing': typeof PricingRoute
+  '/provider': typeof ProviderRoute
   '/providers': typeof ProvidersRoute
   '/resources': typeof ResourcesRoute
   '/signup': typeof SignupRoute
@@ -162,6 +169,7 @@ export interface FileRoutesByTo {
   '/live-support': typeof LiveSupportRoute
   '/login': typeof LoginRoute
   '/pricing': typeof PricingRoute
+  '/provider': typeof ProviderRoute
   '/providers': typeof ProvidersRoute
   '/resources': typeof ResourcesRoute
   '/signup': typeof SignupRoute
@@ -185,6 +193,7 @@ export interface FileRoutesById {
   '/live-support': typeof LiveSupportRoute
   '/login': typeof LoginRoute
   '/pricing': typeof PricingRoute
+  '/provider': typeof ProviderRoute
   '/providers': typeof ProvidersRoute
   '/resources': typeof ResourcesRoute
   '/signup': typeof SignupRoute
@@ -209,6 +218,7 @@ export interface FileRouteTypes {
     | '/live-support'
     | '/login'
     | '/pricing'
+    | '/provider'
     | '/providers'
     | '/resources'
     | '/signup'
@@ -230,6 +240,7 @@ export interface FileRouteTypes {
     | '/live-support'
     | '/login'
     | '/pricing'
+    | '/provider'
     | '/providers'
     | '/resources'
     | '/signup'
@@ -252,6 +263,7 @@ export interface FileRouteTypes {
     | '/live-support'
     | '/login'
     | '/pricing'
+    | '/provider'
     | '/providers'
     | '/resources'
     | '/signup'
@@ -275,6 +287,7 @@ export interface RootRouteChildren {
   LiveSupportRoute: typeof LiveSupportRoute
   LoginRoute: typeof LoginRoute
   PricingRoute: typeof PricingRoute
+  ProviderRoute: typeof ProviderRoute
   ProvidersRoute: typeof ProvidersRoute
   ResourcesRoute: typeof ResourcesRoute
   SignupRoute: typeof SignupRoute
@@ -338,6 +351,13 @@ declare module '@tanstack/react-router' {
       path: '/pricing'
       fullPath: '/pricing'
       preLoaderRoute: typeof PricingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/provider': {
+      id: '/provider'
+      path: '/provider'
+      fullPath: '/provider'
+      preLoaderRoute: typeof ProviderRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/providers': {
@@ -460,6 +480,7 @@ const rootRouteChildren: RootRouteChildren = {
   LiveSupportRoute: LiveSupportRoute,
   LoginRoute: LoginRoute,
   PricingRoute: PricingRoute,
+  ProviderRoute: ProviderRoute,
   ProvidersRoute: ProvidersRoute,
   ResourcesRoute: ResourcesRoute,
   SignupRoute: SignupRoute,
