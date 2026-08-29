@@ -24,6 +24,7 @@ import { Route as SolutionsRouteImport } from './routes/solutions'
 import { Route as SystemWatchRouteImport } from './routes/system-watch'
 import { Route as DashboardIndexRouteImport } from './routes/dashboard.index'
 import { Route as DashboardRequestsIndexRouteImport } from './routes/dashboard.requests.index'
+import { Route as DashboardRequestsRequestIdRouteImport } from './routes/dashboard.requests.$requestId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -100,6 +101,12 @@ const DashboardRequestsIndexRoute = DashboardRequestsIndexRouteImport.update({
   path: '/requests/',
   getParentRoute: () => DashboardRoute,
 } as any)
+const DashboardRequestsRequestIdRoute =
+  DashboardRequestsRequestIdRouteImport.update({
+    id: '/requests/$requestId',
+    path: '/requests/$requestId',
+    getParentRoute: () => DashboardRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -116,6 +123,7 @@ export interface FileRoutesByFullPath {
   '/solutions': typeof SolutionsRoute
   '/system-watch': typeof SystemWatchRoute
   '/dashboard/': typeof DashboardIndexRoute
+  '/dashboard/requests/$requestId': typeof DashboardRequestsRequestIdRoute
   '/dashboard/requests/': typeof DashboardRequestsIndexRoute
 }
 export interface FileRoutesByTo {
@@ -132,6 +140,7 @@ export interface FileRoutesByTo {
   '/solutions': typeof SolutionsRoute
   '/system-watch': typeof SystemWatchRoute
   '/dashboard': typeof DashboardIndexRoute
+  '/dashboard/requests/$requestId': typeof DashboardRequestsRequestIdRoute
   '/dashboard/requests': typeof DashboardRequestsIndexRoute
 }
 export interface FileRoutesById {
@@ -150,6 +159,7 @@ export interface FileRoutesById {
   '/solutions': typeof SolutionsRoute
   '/system-watch': typeof SystemWatchRoute
   '/dashboard/': typeof DashboardIndexRoute
+  '/dashboard/requests/$requestId': typeof DashboardRequestsRequestIdRoute
   '/dashboard/requests/': typeof DashboardRequestsIndexRoute
 }
 export interface FileRouteTypes {
@@ -169,6 +179,7 @@ export interface FileRouteTypes {
     | '/solutions'
     | '/system-watch'
     | '/dashboard/'
+    | '/dashboard/requests/$requestId'
     | '/dashboard/requests/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -185,6 +196,7 @@ export interface FileRouteTypes {
     | '/solutions'
     | '/system-watch'
     | '/dashboard'
+    | '/dashboard/requests/$requestId'
     | '/dashboard/requests'
   id:
     | '__root__'
@@ -202,6 +214,7 @@ export interface FileRouteTypes {
     | '/solutions'
     | '/system-watch'
     | '/dashboard/'
+    | '/dashboard/requests/$requestId'
     | '/dashboard/requests/'
   fileRoutesById: FileRoutesById
 }
@@ -328,16 +341,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardRequestsIndexRouteImport
       parentRoute: typeof DashboardRoute
     }
+    '/dashboard/requests/$requestId': {
+      id: '/dashboard/requests/$requestId'
+      path: '/requests/$requestId'
+      fullPath: '/dashboard/requests/$requestId'
+      preLoaderRoute: typeof DashboardRequestsRequestIdRouteImport
+      parentRoute: typeof DashboardRoute
+    }
   }
 }
 
 interface DashboardRouteChildren {
   DashboardIndexRoute: typeof DashboardIndexRoute
+  DashboardRequestsRequestIdRoute: typeof DashboardRequestsRequestIdRoute
   DashboardRequestsIndexRoute: typeof DashboardRequestsIndexRoute
 }
 
 const DashboardRouteChildren: DashboardRouteChildren = {
   DashboardIndexRoute: DashboardIndexRoute,
+  DashboardRequestsRequestIdRoute: DashboardRequestsRequestIdRoute,
   DashboardRequestsIndexRoute: DashboardRequestsIndexRoute,
 }
 
