@@ -25,6 +25,7 @@ import { Route as SystemWatchRouteImport } from './routes/system-watch'
 import { Route as DashboardIndexRouteImport } from './routes/dashboard.index'
 import { Route as DashboardLiveSupportRouteImport } from './routes/dashboard.live-support'
 import { Route as DashboardMessagesRouteImport } from './routes/dashboard.messages'
+import { Route as DashboardSystemWatchRouteImport } from './routes/dashboard.system-watch'
 import { Route as DashboardRequestsIndexRouteImport } from './routes/dashboard.requests.index'
 import { Route as DashboardRequestsRequestIdRouteImport } from './routes/dashboard.requests.$requestId'
 
@@ -108,6 +109,11 @@ const DashboardMessagesRoute = DashboardMessagesRouteImport.update({
   path: '/messages',
   getParentRoute: () => DashboardRoute,
 } as any)
+const DashboardSystemWatchRoute = DashboardSystemWatchRouteImport.update({
+  id: '/system-watch',
+  path: '/system-watch',
+  getParentRoute: () => DashboardRoute,
+} as any)
 const DashboardRequestsIndexRoute = DashboardRequestsIndexRouteImport.update({
   id: '/requests/',
   path: '/requests/',
@@ -136,6 +142,7 @@ export interface FileRoutesByFullPath {
   '/system-watch': typeof SystemWatchRoute
   '/dashboard/live-support': typeof DashboardLiveSupportRoute
   '/dashboard/messages': typeof DashboardMessagesRoute
+  '/dashboard/system-watch': typeof DashboardSystemWatchRoute
   '/dashboard/': typeof DashboardIndexRoute
   '/dashboard/requests/$requestId': typeof DashboardRequestsRequestIdRoute
   '/dashboard/requests/': typeof DashboardRequestsIndexRoute
@@ -155,6 +162,7 @@ export interface FileRoutesByTo {
   '/system-watch': typeof SystemWatchRoute
   '/dashboard/live-support': typeof DashboardLiveSupportRoute
   '/dashboard/messages': typeof DashboardMessagesRoute
+  '/dashboard/system-watch': typeof DashboardSystemWatchRoute
   '/dashboard': typeof DashboardIndexRoute
   '/dashboard/requests/$requestId': typeof DashboardRequestsRequestIdRoute
   '/dashboard/requests': typeof DashboardRequestsIndexRoute
@@ -176,6 +184,7 @@ export interface FileRoutesById {
   '/system-watch': typeof SystemWatchRoute
   '/dashboard/live-support': typeof DashboardLiveSupportRoute
   '/dashboard/messages': typeof DashboardMessagesRoute
+  '/dashboard/system-watch': typeof DashboardSystemWatchRoute
   '/dashboard/': typeof DashboardIndexRoute
   '/dashboard/requests/$requestId': typeof DashboardRequestsRequestIdRoute
   '/dashboard/requests/': typeof DashboardRequestsIndexRoute
@@ -198,6 +207,7 @@ export interface FileRouteTypes {
     | '/system-watch'
     | '/dashboard/live-support'
     | '/dashboard/messages'
+    | '/dashboard/system-watch'
     | '/dashboard/'
     | '/dashboard/requests/$requestId'
     | '/dashboard/requests/'
@@ -217,6 +227,7 @@ export interface FileRouteTypes {
     | '/system-watch'
     | '/dashboard/live-support'
     | '/dashboard/messages'
+    | '/dashboard/system-watch'
     | '/dashboard'
     | '/dashboard/requests/$requestId'
     | '/dashboard/requests'
@@ -237,6 +248,7 @@ export interface FileRouteTypes {
     | '/system-watch'
     | '/dashboard/live-support'
     | '/dashboard/messages'
+    | '/dashboard/system-watch'
     | '/dashboard/'
     | '/dashboard/requests/$requestId'
     | '/dashboard/requests/'
@@ -372,6 +384,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardMessagesRouteImport
       parentRoute: typeof DashboardRoute
     }
+    '/dashboard/system-watch': {
+      id: '/dashboard/system-watch'
+      path: '/system-watch'
+      fullPath: '/dashboard/system-watch'
+      preLoaderRoute: typeof DashboardSystemWatchRouteImport
+      parentRoute: typeof DashboardRoute
+    }
     '/dashboard/requests/': {
       id: '/dashboard/requests/'
       path: '/requests'
@@ -392,6 +411,7 @@ declare module '@tanstack/react-router' {
 interface DashboardRouteChildren {
   DashboardLiveSupportRoute: typeof DashboardLiveSupportRoute
   DashboardMessagesRoute: typeof DashboardMessagesRoute
+  DashboardSystemWatchRoute: typeof DashboardSystemWatchRoute
   DashboardIndexRoute: typeof DashboardIndexRoute
   DashboardRequestsRequestIdRoute: typeof DashboardRequestsRequestIdRoute
   DashboardRequestsIndexRoute: typeof DashboardRequestsIndexRoute
@@ -400,6 +420,7 @@ interface DashboardRouteChildren {
 const DashboardRouteChildren: DashboardRouteChildren = {
   DashboardLiveSupportRoute: DashboardLiveSupportRoute,
   DashboardMessagesRoute: DashboardMessagesRoute,
+  DashboardSystemWatchRoute: DashboardSystemWatchRoute,
   DashboardIndexRoute: DashboardIndexRoute,
   DashboardRequestsRequestIdRoute: DashboardRequestsRequestIdRoute,
   DashboardRequestsIndexRoute: DashboardRequestsIndexRoute,
