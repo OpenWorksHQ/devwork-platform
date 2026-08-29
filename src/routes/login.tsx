@@ -7,6 +7,14 @@ import { Btn } from "@/components/dw/ui";
 import { useAuth, type UserType } from "@/lib/auth";
 
 export const Route = createFileRoute("/login")({
+  validateSearch: (search: Record<string, unknown>) => ({
+    type:
+      search['type'] === "provider"
+        ? ("provider" as const)
+        : search['type'] === "customer"
+          ? ("customer" as const)
+          : undefined,
+  }),
   head: () => ({
     meta: [
       { title: "Log in to DevWork" },
@@ -24,7 +32,9 @@ export const Route = createFileRoute("/login")({
 });
 
 function Login() {
-  const [type, setType] = useState<UserType>("customer");
+  const search = Route.useSearch();
+  const [type, setType] = useState<UserType>(search.type ?? "customer");
+
   const [email, setEmail] = useState("");
   const { signIn } = useAuth();
   const navigate = useNavigate();

@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 import { useState, type ReactNode } from "react";
-import { BtnLink } from "./ui";
+import { btnClass, BtnLink } from "./ui";
 import { useAuth } from "@/lib/auth";
 
 const NAV = [
@@ -45,9 +45,9 @@ export function SiteHeader() {
             </BtnLink>
           ) : (
             <>
-              <BtnLink to="/login" variant="inkOutline" size="sm">
+              <Link to="/login" search={{ type: undefined }} className={btnClass("inkOutline", "sm")}>
                 Log in
-              </BtnLink>
+              </Link>
               <BtnLink to="/get-started" variant="white" size="sm">
                 Get Started
               </BtnLink>
@@ -78,9 +78,14 @@ export function SiteHeader() {
               </Link>
             ))}
             <div className="mt-3 grid grid-cols-2 gap-2">
-              <BtnLink to="/login" variant="inkOutline" size="sm" onClick={() => setOpen(false)}>
+              <Link
+                to="/login"
+                search={{ type: undefined }}
+                className={btnClass("inkOutline", "sm")}
+                onClick={() => setOpen(false)}
+              >
                 Log in
-              </BtnLink>
+              </Link>
               <BtnLink to="/get-started" variant="white" size="sm" onClick={() => setOpen(false)}>
                 Get Started
               </BtnLink>

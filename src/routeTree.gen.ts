@@ -11,18 +11,31 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as DevmodeRouteImport } from './routes/devmode'
 import { Route as EnterpriseRouteImport } from './routes/enterprise'
 import { Route as GetStartedRouteImport } from './routes/get-started'
 import { Route as HowItWorksRouteImport } from './routes/how-it-works'
 import { Route as LiveSupportRouteImport } from './routes/live-support'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as ProviderRouteImport } from './routes/provider'
 import { Route as ProvidersRouteImport } from './routes/providers'
 import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as SignupRouteImport } from './routes/signup'
 import { Route as SolutionsRouteImport } from './routes/solutions'
 import { Route as SystemWatchRouteImport } from './routes/system-watch'
 import { Route as DashboardIndexRouteImport } from './routes/dashboard.index'
+import { Route as DashboardBillingRouteImport } from './routes/dashboard.billing'
+import { Route as DashboardLiveSupportRouteImport } from './routes/dashboard.live-support'
+import { Route as DashboardMessagesRouteImport } from './routes/dashboard.messages'
+import { Route as DashboardSystemWatchRouteImport } from './routes/dashboard.system-watch'
+import { Route as ProviderIndexRouteImport } from './routes/provider.index'
+import { Route as ProviderAssignmentsRouteImport } from './routes/provider.assignments'
+import { Route as ProviderEarningsRouteImport } from './routes/provider.earnings'
+import { Route as ProviderOpportunitiesRouteImport } from './routes/provider.opportunities'
+import { Route as ProviderProfileRouteImport } from './routes/provider.profile'
+import { Route as DashboardRequestsIndexRouteImport } from './routes/dashboard.requests.index'
+import { Route as DashboardRequestsRequestIdRouteImport } from './routes/dashboard.requests.$requestId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -32,6 +45,11 @@ const IndexRoute = IndexRouteImport.update({
 const DashboardRoute = DashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DevmodeRoute = DevmodeRouteImport.update({
+  id: '/devmode',
+  path: '/devmode',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EnterpriseRoute = EnterpriseRouteImport.update({
@@ -64,6 +82,11 @@ const PricingRoute = PricingRouteImport.update({
   path: '/pricing',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProviderRoute = ProviderRouteImport.update({
+  id: '/provider',
+  path: '/provider',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProvidersRoute = ProvidersRouteImport.update({
   id: '/providers',
   path: '/providers',
@@ -94,25 +117,95 @@ const DashboardIndexRoute = DashboardIndexRouteImport.update({
   path: '/',
   getParentRoute: () => DashboardRoute,
 } as any)
+const DashboardBillingRoute = DashboardBillingRouteImport.update({
+  id: '/billing',
+  path: '/billing',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardLiveSupportRoute = DashboardLiveSupportRouteImport.update({
+  id: '/live-support',
+  path: '/live-support',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardMessagesRoute = DashboardMessagesRouteImport.update({
+  id: '/messages',
+  path: '/messages',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardSystemWatchRoute = DashboardSystemWatchRouteImport.update({
+  id: '/system-watch',
+  path: '/system-watch',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const ProviderIndexRoute = ProviderIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ProviderRoute,
+} as any)
+const ProviderAssignmentsRoute = ProviderAssignmentsRouteImport.update({
+  id: '/assignments',
+  path: '/assignments',
+  getParentRoute: () => ProviderRoute,
+} as any)
+const ProviderEarningsRoute = ProviderEarningsRouteImport.update({
+  id: '/earnings',
+  path: '/earnings',
+  getParentRoute: () => ProviderRoute,
+} as any)
+const ProviderOpportunitiesRoute = ProviderOpportunitiesRouteImport.update({
+  id: '/opportunities',
+  path: '/opportunities',
+  getParentRoute: () => ProviderRoute,
+} as any)
+const ProviderProfileRoute = ProviderProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => ProviderRoute,
+} as any)
+const DashboardRequestsIndexRoute = DashboardRequestsIndexRouteImport.update({
+  id: '/requests/',
+  path: '/requests/',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardRequestsRequestIdRoute =
+  DashboardRequestsRequestIdRouteImport.update({
+    id: '/requests/$requestId',
+    path: '/requests/$requestId',
+    getParentRoute: () => DashboardRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/dashboard': typeof DashboardRouteWithChildren
+  '/devmode': typeof DevmodeRoute
   '/enterprise': typeof EnterpriseRoute
   '/get-started': typeof GetStartedRoute
   '/how-it-works': typeof HowItWorksRoute
   '/live-support': typeof LiveSupportRoute
   '/login': typeof LoginRoute
   '/pricing': typeof PricingRoute
+  '/provider': typeof ProviderRouteWithChildren
   '/providers': typeof ProvidersRoute
   '/resources': typeof ResourcesRoute
   '/signup': typeof SignupRoute
   '/solutions': typeof SolutionsRoute
   '/system-watch': typeof SystemWatchRoute
+  '/dashboard/billing': typeof DashboardBillingRoute
+  '/dashboard/live-support': typeof DashboardLiveSupportRoute
+  '/dashboard/messages': typeof DashboardMessagesRoute
+  '/dashboard/system-watch': typeof DashboardSystemWatchRoute
+  '/provider/assignments': typeof ProviderAssignmentsRoute
+  '/provider/earnings': typeof ProviderEarningsRoute
+  '/provider/opportunities': typeof ProviderOpportunitiesRoute
+  '/provider/profile': typeof ProviderProfileRoute
   '/dashboard/': typeof DashboardIndexRoute
+  '/provider/': typeof ProviderIndexRoute
+  '/dashboard/requests/$requestId': typeof DashboardRequestsRequestIdRoute
+  '/dashboard/requests/': typeof DashboardRequestsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/devmode': typeof DevmodeRoute
   '/enterprise': typeof EnterpriseRoute
   '/get-started': typeof GetStartedRoute
   '/how-it-works': typeof HowItWorksRoute
@@ -124,45 +217,83 @@ export interface FileRoutesByTo {
   '/signup': typeof SignupRoute
   '/solutions': typeof SolutionsRoute
   '/system-watch': typeof SystemWatchRoute
+  '/dashboard/billing': typeof DashboardBillingRoute
+  '/dashboard/live-support': typeof DashboardLiveSupportRoute
+  '/dashboard/messages': typeof DashboardMessagesRoute
+  '/dashboard/system-watch': typeof DashboardSystemWatchRoute
+  '/provider/assignments': typeof ProviderAssignmentsRoute
+  '/provider/earnings': typeof ProviderEarningsRoute
+  '/provider/opportunities': typeof ProviderOpportunitiesRoute
+  '/provider/profile': typeof ProviderProfileRoute
   '/dashboard': typeof DashboardIndexRoute
+  '/provider': typeof ProviderIndexRoute
+  '/dashboard/requests/$requestId': typeof DashboardRequestsRequestIdRoute
+  '/dashboard/requests': typeof DashboardRequestsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/dashboard': typeof DashboardRouteWithChildren
+  '/devmode': typeof DevmodeRoute
   '/enterprise': typeof EnterpriseRoute
   '/get-started': typeof GetStartedRoute
   '/how-it-works': typeof HowItWorksRoute
   '/live-support': typeof LiveSupportRoute
   '/login': typeof LoginRoute
   '/pricing': typeof PricingRoute
+  '/provider': typeof ProviderRouteWithChildren
   '/providers': typeof ProvidersRoute
   '/resources': typeof ResourcesRoute
   '/signup': typeof SignupRoute
   '/solutions': typeof SolutionsRoute
   '/system-watch': typeof SystemWatchRoute
+  '/dashboard/billing': typeof DashboardBillingRoute
+  '/dashboard/live-support': typeof DashboardLiveSupportRoute
+  '/dashboard/messages': typeof DashboardMessagesRoute
+  '/dashboard/system-watch': typeof DashboardSystemWatchRoute
+  '/provider/assignments': typeof ProviderAssignmentsRoute
+  '/provider/earnings': typeof ProviderEarningsRoute
+  '/provider/opportunities': typeof ProviderOpportunitiesRoute
+  '/provider/profile': typeof ProviderProfileRoute
   '/dashboard/': typeof DashboardIndexRoute
+  '/provider/': typeof ProviderIndexRoute
+  '/dashboard/requests/$requestId': typeof DashboardRequestsRequestIdRoute
+  '/dashboard/requests/': typeof DashboardRequestsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/dashboard'
+    | '/devmode'
     | '/enterprise'
     | '/get-started'
     | '/how-it-works'
     | '/live-support'
     | '/login'
     | '/pricing'
+    | '/provider'
     | '/providers'
     | '/resources'
     | '/signup'
     | '/solutions'
     | '/system-watch'
+    | '/dashboard/billing'
+    | '/dashboard/live-support'
+    | '/dashboard/messages'
+    | '/dashboard/system-watch'
+    | '/provider/assignments'
+    | '/provider/earnings'
+    | '/provider/opportunities'
+    | '/provider/profile'
     | '/dashboard/'
+    | '/provider/'
+    | '/dashboard/requests/$requestId'
+    | '/dashboard/requests/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/devmode'
     | '/enterprise'
     | '/get-started'
     | '/how-it-works'
@@ -174,34 +305,60 @@ export interface FileRouteTypes {
     | '/signup'
     | '/solutions'
     | '/system-watch'
+    | '/dashboard/billing'
+    | '/dashboard/live-support'
+    | '/dashboard/messages'
+    | '/dashboard/system-watch'
+    | '/provider/assignments'
+    | '/provider/earnings'
+    | '/provider/opportunities'
+    | '/provider/profile'
     | '/dashboard'
+    | '/provider'
+    | '/dashboard/requests/$requestId'
+    | '/dashboard/requests'
   id:
     | '__root__'
     | '/'
     | '/dashboard'
+    | '/devmode'
     | '/enterprise'
     | '/get-started'
     | '/how-it-works'
     | '/live-support'
     | '/login'
     | '/pricing'
+    | '/provider'
     | '/providers'
     | '/resources'
     | '/signup'
     | '/solutions'
     | '/system-watch'
+    | '/dashboard/billing'
+    | '/dashboard/live-support'
+    | '/dashboard/messages'
+    | '/dashboard/system-watch'
+    | '/provider/assignments'
+    | '/provider/earnings'
+    | '/provider/opportunities'
+    | '/provider/profile'
     | '/dashboard/'
+    | '/provider/'
+    | '/dashboard/requests/$requestId'
+    | '/dashboard/requests/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DashboardRoute: typeof DashboardRouteWithChildren
+  DevmodeRoute: typeof DevmodeRoute
   EnterpriseRoute: typeof EnterpriseRoute
   GetStartedRoute: typeof GetStartedRoute
   HowItWorksRoute: typeof HowItWorksRoute
   LiveSupportRoute: typeof LiveSupportRoute
   LoginRoute: typeof LoginRoute
   PricingRoute: typeof PricingRoute
+  ProviderRoute: typeof ProviderRouteWithChildren
   ProvidersRoute: typeof ProvidersRoute
   ResourcesRoute: typeof ResourcesRoute
   SignupRoute: typeof SignupRoute
@@ -223,6 +380,13 @@ declare module '@tanstack/react-router' {
       path: '/dashboard'
       fullPath: '/dashboard'
       preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/devmode': {
+      id: '/devmode'
+      path: '/devmode'
+      fullPath: '/devmode'
+      preLoaderRoute: typeof DevmodeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/enterprise': {
@@ -267,6 +431,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PricingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/provider': {
+      id: '/provider'
+      path: '/provider'
+      fullPath: '/provider'
+      preLoaderRoute: typeof ProviderRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/providers': {
       id: '/providers'
       path: '/providers'
@@ -309,30 +480,141 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardIndexRouteImport
       parentRoute: typeof DashboardRoute
     }
+    '/dashboard/billing': {
+      id: '/dashboard/billing'
+      path: '/billing'
+      fullPath: '/dashboard/billing'
+      preLoaderRoute: typeof DashboardBillingRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/live-support': {
+      id: '/dashboard/live-support'
+      path: '/live-support'
+      fullPath: '/dashboard/live-support'
+      preLoaderRoute: typeof DashboardLiveSupportRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/messages': {
+      id: '/dashboard/messages'
+      path: '/messages'
+      fullPath: '/dashboard/messages'
+      preLoaderRoute: typeof DashboardMessagesRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/system-watch': {
+      id: '/dashboard/system-watch'
+      path: '/system-watch'
+      fullPath: '/dashboard/system-watch'
+      preLoaderRoute: typeof DashboardSystemWatchRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/provider/': {
+      id: '/provider/'
+      path: '/'
+      fullPath: '/provider/'
+      preLoaderRoute: typeof ProviderIndexRouteImport
+      parentRoute: typeof ProviderRoute
+    }
+    '/provider/assignments': {
+      id: '/provider/assignments'
+      path: '/assignments'
+      fullPath: '/provider/assignments'
+      preLoaderRoute: typeof ProviderAssignmentsRouteImport
+      parentRoute: typeof ProviderRoute
+    }
+    '/provider/earnings': {
+      id: '/provider/earnings'
+      path: '/earnings'
+      fullPath: '/provider/earnings'
+      preLoaderRoute: typeof ProviderEarningsRouteImport
+      parentRoute: typeof ProviderRoute
+    }
+    '/provider/opportunities': {
+      id: '/provider/opportunities'
+      path: '/opportunities'
+      fullPath: '/provider/opportunities'
+      preLoaderRoute: typeof ProviderOpportunitiesRouteImport
+      parentRoute: typeof ProviderRoute
+    }
+    '/provider/profile': {
+      id: '/provider/profile'
+      path: '/profile'
+      fullPath: '/provider/profile'
+      preLoaderRoute: typeof ProviderProfileRouteImport
+      parentRoute: typeof ProviderRoute
+    }
+    '/dashboard/requests/': {
+      id: '/dashboard/requests/'
+      path: '/requests'
+      fullPath: '/dashboard/requests/'
+      preLoaderRoute: typeof DashboardRequestsIndexRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/requests/$requestId': {
+      id: '/dashboard/requests/$requestId'
+      path: '/requests/$requestId'
+      fullPath: '/dashboard/requests/$requestId'
+      preLoaderRoute: typeof DashboardRequestsRequestIdRouteImport
+      parentRoute: typeof DashboardRoute
+    }
   }
 }
 
 interface DashboardRouteChildren {
+  DashboardBillingRoute: typeof DashboardBillingRoute
+  DashboardLiveSupportRoute: typeof DashboardLiveSupportRoute
+  DashboardMessagesRoute: typeof DashboardMessagesRoute
+  DashboardSystemWatchRoute: typeof DashboardSystemWatchRoute
   DashboardIndexRoute: typeof DashboardIndexRoute
+  DashboardRequestsRequestIdRoute: typeof DashboardRequestsRequestIdRoute
+  DashboardRequestsIndexRoute: typeof DashboardRequestsIndexRoute
 }
 
 const DashboardRouteChildren: DashboardRouteChildren = {
+  DashboardBillingRoute: DashboardBillingRoute,
+  DashboardLiveSupportRoute: DashboardLiveSupportRoute,
+  DashboardMessagesRoute: DashboardMessagesRoute,
+  DashboardSystemWatchRoute: DashboardSystemWatchRoute,
   DashboardIndexRoute: DashboardIndexRoute,
+  DashboardRequestsRequestIdRoute: DashboardRequestsRequestIdRoute,
+  DashboardRequestsIndexRoute: DashboardRequestsIndexRoute,
 }
 
 const DashboardRouteWithChildren = DashboardRoute._addFileChildren(
   DashboardRouteChildren,
 )
 
+interface ProviderRouteChildren {
+  ProviderAssignmentsRoute: typeof ProviderAssignmentsRoute
+  ProviderEarningsRoute: typeof ProviderEarningsRoute
+  ProviderOpportunitiesRoute: typeof ProviderOpportunitiesRoute
+  ProviderProfileRoute: typeof ProviderProfileRoute
+  ProviderIndexRoute: typeof ProviderIndexRoute
+}
+
+const ProviderRouteChildren: ProviderRouteChildren = {
+  ProviderAssignmentsRoute: ProviderAssignmentsRoute,
+  ProviderEarningsRoute: ProviderEarningsRoute,
+  ProviderOpportunitiesRoute: ProviderOpportunitiesRoute,
+  ProviderProfileRoute: ProviderProfileRoute,
+  ProviderIndexRoute: ProviderIndexRoute,
+}
+
+const ProviderRouteWithChildren = ProviderRoute._addFileChildren(
+  ProviderRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DashboardRoute: DashboardRouteWithChildren,
+  DevmodeRoute: DevmodeRoute,
   EnterpriseRoute: EnterpriseRoute,
   GetStartedRoute: GetStartedRoute,
   HowItWorksRoute: HowItWorksRoute,
   LiveSupportRoute: LiveSupportRoute,
   LoginRoute: LoginRoute,
   PricingRoute: PricingRoute,
+  ProviderRoute: ProviderRouteWithChildren,
   ProvidersRoute: ProvidersRoute,
   ResourcesRoute: ResourcesRoute,
   SignupRoute: SignupRoute,
