@@ -23,6 +23,7 @@ import { Route as SignupRouteImport } from './routes/signup'
 import { Route as SolutionsRouteImport } from './routes/solutions'
 import { Route as SystemWatchRouteImport } from './routes/system-watch'
 import { Route as DashboardIndexRouteImport } from './routes/dashboard.index'
+import { Route as DashboardMessagesRouteImport } from './routes/dashboard.messages'
 import { Route as DashboardRequestsIndexRouteImport } from './routes/dashboard.requests.index'
 import { Route as DashboardRequestsRequestIdRouteImport } from './routes/dashboard.requests.$requestId'
 
@@ -96,6 +97,11 @@ const DashboardIndexRoute = DashboardIndexRouteImport.update({
   path: '/',
   getParentRoute: () => DashboardRoute,
 } as any)
+const DashboardMessagesRoute = DashboardMessagesRouteImport.update({
+  id: '/messages',
+  path: '/messages',
+  getParentRoute: () => DashboardRoute,
+} as any)
 const DashboardRequestsIndexRoute = DashboardRequestsIndexRouteImport.update({
   id: '/requests/',
   path: '/requests/',
@@ -122,6 +128,7 @@ export interface FileRoutesByFullPath {
   '/signup': typeof SignupRoute
   '/solutions': typeof SolutionsRoute
   '/system-watch': typeof SystemWatchRoute
+  '/dashboard/messages': typeof DashboardMessagesRoute
   '/dashboard/': typeof DashboardIndexRoute
   '/dashboard/requests/$requestId': typeof DashboardRequestsRequestIdRoute
   '/dashboard/requests/': typeof DashboardRequestsIndexRoute
@@ -139,6 +146,7 @@ export interface FileRoutesByTo {
   '/signup': typeof SignupRoute
   '/solutions': typeof SolutionsRoute
   '/system-watch': typeof SystemWatchRoute
+  '/dashboard/messages': typeof DashboardMessagesRoute
   '/dashboard': typeof DashboardIndexRoute
   '/dashboard/requests/$requestId': typeof DashboardRequestsRequestIdRoute
   '/dashboard/requests': typeof DashboardRequestsIndexRoute
@@ -158,6 +166,7 @@ export interface FileRoutesById {
   '/signup': typeof SignupRoute
   '/solutions': typeof SolutionsRoute
   '/system-watch': typeof SystemWatchRoute
+  '/dashboard/messages': typeof DashboardMessagesRoute
   '/dashboard/': typeof DashboardIndexRoute
   '/dashboard/requests/$requestId': typeof DashboardRequestsRequestIdRoute
   '/dashboard/requests/': typeof DashboardRequestsIndexRoute
@@ -178,6 +187,7 @@ export interface FileRouteTypes {
     | '/signup'
     | '/solutions'
     | '/system-watch'
+    | '/dashboard/messages'
     | '/dashboard/'
     | '/dashboard/requests/$requestId'
     | '/dashboard/requests/'
@@ -195,6 +205,7 @@ export interface FileRouteTypes {
     | '/signup'
     | '/solutions'
     | '/system-watch'
+    | '/dashboard/messages'
     | '/dashboard'
     | '/dashboard/requests/$requestId'
     | '/dashboard/requests'
@@ -213,6 +224,7 @@ export interface FileRouteTypes {
     | '/signup'
     | '/solutions'
     | '/system-watch'
+    | '/dashboard/messages'
     | '/dashboard/'
     | '/dashboard/requests/$requestId'
     | '/dashboard/requests/'
@@ -334,6 +346,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardIndexRouteImport
       parentRoute: typeof DashboardRoute
     }
+    '/dashboard/messages': {
+      id: '/dashboard/messages'
+      path: '/messages'
+      fullPath: '/dashboard/messages'
+      preLoaderRoute: typeof DashboardMessagesRouteImport
+      parentRoute: typeof DashboardRoute
+    }
     '/dashboard/requests/': {
       id: '/dashboard/requests/'
       path: '/requests'
@@ -352,12 +371,14 @@ declare module '@tanstack/react-router' {
 }
 
 interface DashboardRouteChildren {
+  DashboardMessagesRoute: typeof DashboardMessagesRoute
   DashboardIndexRoute: typeof DashboardIndexRoute
   DashboardRequestsRequestIdRoute: typeof DashboardRequestsRequestIdRoute
   DashboardRequestsIndexRoute: typeof DashboardRequestsIndexRoute
 }
 
 const DashboardRouteChildren: DashboardRouteChildren = {
+  DashboardMessagesRoute: DashboardMessagesRoute,
   DashboardIndexRoute: DashboardIndexRoute,
   DashboardRequestsRequestIdRoute: DashboardRequestsRequestIdRoute,
   DashboardRequestsIndexRoute: DashboardRequestsIndexRoute,
