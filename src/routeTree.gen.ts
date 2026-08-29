@@ -23,6 +23,7 @@ import { Route as SignupRouteImport } from './routes/signup'
 import { Route as SolutionsRouteImport } from './routes/solutions'
 import { Route as SystemWatchRouteImport } from './routes/system-watch'
 import { Route as DashboardIndexRouteImport } from './routes/dashboard.index'
+import { Route as DashboardBillingRouteImport } from './routes/dashboard.billing'
 import { Route as DashboardLiveSupportRouteImport } from './routes/dashboard.live-support'
 import { Route as DashboardMessagesRouteImport } from './routes/dashboard.messages'
 import { Route as DashboardSystemWatchRouteImport } from './routes/dashboard.system-watch'
@@ -99,6 +100,11 @@ const DashboardIndexRoute = DashboardIndexRouteImport.update({
   path: '/',
   getParentRoute: () => DashboardRoute,
 } as any)
+const DashboardBillingRoute = DashboardBillingRouteImport.update({
+  id: '/billing',
+  path: '/billing',
+  getParentRoute: () => DashboardRoute,
+} as any)
 const DashboardLiveSupportRoute = DashboardLiveSupportRouteImport.update({
   id: '/live-support',
   path: '/live-support',
@@ -140,6 +146,7 @@ export interface FileRoutesByFullPath {
   '/signup': typeof SignupRoute
   '/solutions': typeof SolutionsRoute
   '/system-watch': typeof SystemWatchRoute
+  '/dashboard/billing': typeof DashboardBillingRoute
   '/dashboard/live-support': typeof DashboardLiveSupportRoute
   '/dashboard/messages': typeof DashboardMessagesRoute
   '/dashboard/system-watch': typeof DashboardSystemWatchRoute
@@ -160,6 +167,7 @@ export interface FileRoutesByTo {
   '/signup': typeof SignupRoute
   '/solutions': typeof SolutionsRoute
   '/system-watch': typeof SystemWatchRoute
+  '/dashboard/billing': typeof DashboardBillingRoute
   '/dashboard/live-support': typeof DashboardLiveSupportRoute
   '/dashboard/messages': typeof DashboardMessagesRoute
   '/dashboard/system-watch': typeof DashboardSystemWatchRoute
@@ -182,6 +190,7 @@ export interface FileRoutesById {
   '/signup': typeof SignupRoute
   '/solutions': typeof SolutionsRoute
   '/system-watch': typeof SystemWatchRoute
+  '/dashboard/billing': typeof DashboardBillingRoute
   '/dashboard/live-support': typeof DashboardLiveSupportRoute
   '/dashboard/messages': typeof DashboardMessagesRoute
   '/dashboard/system-watch': typeof DashboardSystemWatchRoute
@@ -205,6 +214,7 @@ export interface FileRouteTypes {
     | '/signup'
     | '/solutions'
     | '/system-watch'
+    | '/dashboard/billing'
     | '/dashboard/live-support'
     | '/dashboard/messages'
     | '/dashboard/system-watch'
@@ -225,6 +235,7 @@ export interface FileRouteTypes {
     | '/signup'
     | '/solutions'
     | '/system-watch'
+    | '/dashboard/billing'
     | '/dashboard/live-support'
     | '/dashboard/messages'
     | '/dashboard/system-watch'
@@ -246,6 +257,7 @@ export interface FileRouteTypes {
     | '/signup'
     | '/solutions'
     | '/system-watch'
+    | '/dashboard/billing'
     | '/dashboard/live-support'
     | '/dashboard/messages'
     | '/dashboard/system-watch'
@@ -370,6 +382,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardIndexRouteImport
       parentRoute: typeof DashboardRoute
     }
+    '/dashboard/billing': {
+      id: '/dashboard/billing'
+      path: '/billing'
+      fullPath: '/dashboard/billing'
+      preLoaderRoute: typeof DashboardBillingRouteImport
+      parentRoute: typeof DashboardRoute
+    }
     '/dashboard/live-support': {
       id: '/dashboard/live-support'
       path: '/live-support'
@@ -409,6 +428,7 @@ declare module '@tanstack/react-router' {
 }
 
 interface DashboardRouteChildren {
+  DashboardBillingRoute: typeof DashboardBillingRoute
   DashboardLiveSupportRoute: typeof DashboardLiveSupportRoute
   DashboardMessagesRoute: typeof DashboardMessagesRoute
   DashboardSystemWatchRoute: typeof DashboardSystemWatchRoute
@@ -418,6 +438,7 @@ interface DashboardRouteChildren {
 }
 
 const DashboardRouteChildren: DashboardRouteChildren = {
+  DashboardBillingRoute: DashboardBillingRoute,
   DashboardLiveSupportRoute: DashboardLiveSupportRoute,
   DashboardMessagesRoute: DashboardMessagesRoute,
   DashboardSystemWatchRoute: DashboardSystemWatchRoute,
