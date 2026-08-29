@@ -19,7 +19,7 @@ import {
   Layers,
 } from "lucide-react";
 import { SiteLayout } from "@/components/dw/SiteLayout";
-import { Avatar, BtnLink, Dot, Eyebrow, SectionHeading } from "@/components/dw/ui";
+import { Avatar, btnClass, BtnLink, Dot, Eyebrow, SectionHeading } from "@/components/dw/ui";
 import { Stepper } from "@/components/dw/RequestTracker";
 import { REQUESTS, SOLUTION_GROUPS } from "@/lib/devwork-data";
 

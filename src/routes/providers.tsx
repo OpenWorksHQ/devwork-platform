@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ArrowRight, BadgeCheck, ChevronRight, Lock } from "lucide-react";
 import { PageHero, SiteLayout } from "@/components/dw/SiteLayout";
-import { BtnLink, SectionHeading } from "@/components/dw/ui";
+import { btnClass, BtnLink, SectionHeading } from "@/components/dw/ui";
 import { PROVIDER_LEVELS } from "@/lib/devwork-data";
 
 export const Route = createFileRoute("/providers")({
