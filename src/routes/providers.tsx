@@ -57,9 +57,9 @@ function Providers() {
         title="Get matched to work you're qualified for."
         intro="Marketplace Providers are independent developers, engineers, consultants, agencies, and technical teams. Providers are not automatically DevWork employees — DevWork controls which categories a provider can access based on verified qualifications."
       >
-        <BtnLink to="/signup" search={{ type: "provider" }} size="lg">
+        <Link to="/signup" search={{ type: "provider" }} className={btnClass("primary", "lg")}>
           Apply as a provider <ArrowRight className="h-4 w-4" />
-        </BtnLink>
+        </Link>
         <BtnLink to="/provider" variant="outline" size="lg">
           View provider dashboard
         </BtnLink>
@@ -150,9 +150,9 @@ function Providers() {
             opportunities.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <BtnLink to="/signup" search={{ type: "provider" }} variant="white" size="lg">
+            <Link to="/signup" search={{ type: "provider" }} className={btnClass("white", "lg")}>
               Apply as a provider
-            </BtnLink>
+            </Link>
             <BtnLink to="/resources" variant="inkOutline" size="lg">
               Provider resources
             </BtnLink>

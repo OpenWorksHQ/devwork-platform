@@ -236,9 +236,13 @@ function Home() {
             </div>
 
             <div className="mt-6 flex flex-wrap items-center gap-3">
-              <BtnLink to="/dashboard/requests/$requestId" params={{ requestId: req.id }} size="sm">
+              <Link
+                to="/dashboard/requests/$requestId"
+                params={{ requestId: req.id }}
+                className={btnClass("primary", "sm")}
+              >
                 Open request <ArrowRight className="h-3.5 w-3.5" />
-              </BtnLink>
+              </Link>
               <Link
                 to="/how-it-works"
                 className="text-[13px] font-medium text-violet hover:underline"
