@@ -22,6 +22,7 @@ import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as SignupRouteImport } from './routes/signup'
 import { Route as SolutionsRouteImport } from './routes/solutions'
 import { Route as SystemWatchRouteImport } from './routes/system-watch'
+import { Route as DashboardIndexRouteImport } from './routes/dashboard.index'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -88,10 +89,15 @@ const SystemWatchRoute = SystemWatchRouteImport.update({
   path: '/system-watch',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DashboardIndexRoute = DashboardIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => DashboardRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/dashboard': typeof DashboardRoute
+  '/dashboard': typeof DashboardRouteWithChildren
   '/enterprise': typeof EnterpriseRoute
   '/get-started': typeof GetStartedRoute
   '/how-it-works': typeof HowItWorksRoute
@@ -103,10 +109,10 @@ export interface FileRoutesByFullPath {
   '/signup': typeof SignupRoute
   '/solutions': typeof SolutionsRoute
   '/system-watch': typeof SystemWatchRoute
+  '/dashboard/': typeof DashboardIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/dashboard': typeof DashboardRoute
   '/enterprise': typeof EnterpriseRoute
   '/get-started': typeof GetStartedRoute
   '/how-it-works': typeof HowItWorksRoute
@@ -118,11 +124,12 @@ export interface FileRoutesByTo {
   '/signup': typeof SignupRoute
   '/solutions': typeof SolutionsRoute
   '/system-watch': typeof SystemWatchRoute
+  '/dashboard': typeof DashboardIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/dashboard': typeof DashboardRoute
+  '/dashboard': typeof DashboardRouteWithChildren
   '/enterprise': typeof EnterpriseRoute
   '/get-started': typeof GetStartedRoute
   '/how-it-works': typeof HowItWorksRoute
@@ -134,6 +141,7 @@ export interface FileRoutesById {
   '/signup': typeof SignupRoute
   '/solutions': typeof SolutionsRoute
   '/system-watch': typeof SystemWatchRoute
+  '/dashboard/': typeof DashboardIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -151,10 +159,10 @@ export interface FileRouteTypes {
     | '/signup'
     | '/solutions'
     | '/system-watch'
+    | '/dashboard/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/dashboard'
     | '/enterprise'
     | '/get-started'
     | '/how-it-works'
@@ -166,6 +174,7 @@ export interface FileRouteTypes {
     | '/signup'
     | '/solutions'
     | '/system-watch'
+    | '/dashboard'
   id:
     | '__root__'
     | '/'
@@ -181,11 +190,12 @@ export interface FileRouteTypes {
     | '/signup'
     | '/solutions'
     | '/system-watch'
+    | '/dashboard/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  DashboardRoute: typeof DashboardRoute
+  DashboardRoute: typeof DashboardRouteWithChildren
   EnterpriseRoute: typeof EnterpriseRoute
   GetStartedRoute: typeof GetStartedRoute
   HowItWorksRoute: typeof HowItWorksRoute
@@ -292,12 +302,31 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SystemWatchRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dashboard/': {
+      id: '/dashboard/'
+      path: '/'
+      fullPath: '/dashboard/'
+      preLoaderRoute: typeof DashboardIndexRouteImport
+      parentRoute: typeof DashboardRoute
+    }
   }
 }
 
+interface DashboardRouteChildren {
+  DashboardIndexRoute: typeof DashboardIndexRoute
+}
+
+const DashboardRouteChildren: DashboardRouteChildren = {
+  DashboardIndexRoute: DashboardIndexRoute,
+}
+
+const DashboardRouteWithChildren = DashboardRoute._addFileChildren(
+  DashboardRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  DashboardRoute: DashboardRoute,
+  DashboardRoute: DashboardRouteWithChildren,
   EnterpriseRoute: EnterpriseRoute,
   GetStartedRoute: GetStartedRoute,
   HowItWorksRoute: HowItWorksRoute,
