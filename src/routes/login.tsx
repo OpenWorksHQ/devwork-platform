@@ -8,7 +8,7 @@ import { useAuth, type UserType } from "@/lib/auth";
 
 export const Route = createFileRoute("/login")({
   validateSearch: (search: Record<string, unknown>) => ({
-    type: search.type === "provider" ? ("provider" as const) : undefined,
+    type: search['type'] === "provider" ? ("provider" as const) : ("customer" as const),
   }),
   head: () => ({
     meta: [
@@ -28,7 +28,7 @@ export const Route = createFileRoute("/login")({
 
 function Login() {
   const search = Route.useSearch();
-  const [type, setType] = useState<UserType>(search.type ?? "customer");
+  const [type, setType] = useState<UserType>(search.type);
 
   const [email, setEmail] = useState("");
   const { signIn } = useAuth();
