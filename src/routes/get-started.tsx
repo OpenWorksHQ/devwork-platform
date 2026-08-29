@@ -25,7 +25,7 @@ export const Route = createFileRoute("/get-started")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
-  component: GetStarted;
+  component: GetStarted,
 });
 
 const PLACEHOLDERS = [
