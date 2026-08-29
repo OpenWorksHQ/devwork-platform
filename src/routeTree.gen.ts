@@ -28,6 +28,7 @@ import { Route as DashboardBillingRouteImport } from './routes/dashboard.billing
 import { Route as DashboardLiveSupportRouteImport } from './routes/dashboard.live-support'
 import { Route as DashboardMessagesRouteImport } from './routes/dashboard.messages'
 import { Route as DashboardSystemWatchRouteImport } from './routes/dashboard.system-watch'
+import { Route as ProviderIndexRouteImport } from './routes/provider.index'
 import { Route as DashboardRequestsIndexRouteImport } from './routes/dashboard.requests.index'
 import { Route as DashboardRequestsRequestIdRouteImport } from './routes/dashboard.requests.$requestId'
 
@@ -126,6 +127,11 @@ const DashboardSystemWatchRoute = DashboardSystemWatchRouteImport.update({
   path: '/system-watch',
   getParentRoute: () => DashboardRoute,
 } as any)
+const ProviderIndexRoute = ProviderIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ProviderRoute,
+} as any)
 const DashboardRequestsIndexRoute = DashboardRequestsIndexRouteImport.update({
   id: '/requests/',
   path: '/requests/',
@@ -147,7 +153,7 @@ export interface FileRoutesByFullPath {
   '/live-support': typeof LiveSupportRoute
   '/login': typeof LoginRoute
   '/pricing': typeof PricingRoute
-  '/provider': typeof ProviderRoute
+  '/provider': typeof ProviderRouteWithChildren
   '/providers': typeof ProvidersRoute
   '/resources': typeof ResourcesRoute
   '/signup': typeof SignupRoute
@@ -158,6 +164,7 @@ export interface FileRoutesByFullPath {
   '/dashboard/messages': typeof DashboardMessagesRoute
   '/dashboard/system-watch': typeof DashboardSystemWatchRoute
   '/dashboard/': typeof DashboardIndexRoute
+  '/provider/': typeof ProviderIndexRoute
   '/dashboard/requests/$requestId': typeof DashboardRequestsRequestIdRoute
   '/dashboard/requests/': typeof DashboardRequestsIndexRoute
 }
@@ -169,7 +176,6 @@ export interface FileRoutesByTo {
   '/live-support': typeof LiveSupportRoute
   '/login': typeof LoginRoute
   '/pricing': typeof PricingRoute
-  '/provider': typeof ProviderRoute
   '/providers': typeof ProvidersRoute
   '/resources': typeof ResourcesRoute
   '/signup': typeof SignupRoute
@@ -180,6 +186,7 @@ export interface FileRoutesByTo {
   '/dashboard/messages': typeof DashboardMessagesRoute
   '/dashboard/system-watch': typeof DashboardSystemWatchRoute
   '/dashboard': typeof DashboardIndexRoute
+  '/provider': typeof ProviderIndexRoute
   '/dashboard/requests/$requestId': typeof DashboardRequestsRequestIdRoute
   '/dashboard/requests': typeof DashboardRequestsIndexRoute
 }
@@ -193,7 +200,7 @@ export interface FileRoutesById {
   '/live-support': typeof LiveSupportRoute
   '/login': typeof LoginRoute
   '/pricing': typeof PricingRoute
-  '/provider': typeof ProviderRoute
+  '/provider': typeof ProviderRouteWithChildren
   '/providers': typeof ProvidersRoute
   '/resources': typeof ResourcesRoute
   '/signup': typeof SignupRoute
@@ -204,6 +211,7 @@ export interface FileRoutesById {
   '/dashboard/messages': typeof DashboardMessagesRoute
   '/dashboard/system-watch': typeof DashboardSystemWatchRoute
   '/dashboard/': typeof DashboardIndexRoute
+  '/provider/': typeof ProviderIndexRoute
   '/dashboard/requests/$requestId': typeof DashboardRequestsRequestIdRoute
   '/dashboard/requests/': typeof DashboardRequestsIndexRoute
 }
@@ -229,6 +237,7 @@ export interface FileRouteTypes {
     | '/dashboard/messages'
     | '/dashboard/system-watch'
     | '/dashboard/'
+    | '/provider/'
     | '/dashboard/requests/$requestId'
     | '/dashboard/requests/'
   fileRoutesByTo: FileRoutesByTo
@@ -240,7 +249,6 @@ export interface FileRouteTypes {
     | '/live-support'
     | '/login'
     | '/pricing'
-    | '/provider'
     | '/providers'
     | '/resources'
     | '/signup'
@@ -251,6 +259,7 @@ export interface FileRouteTypes {
     | '/dashboard/messages'
     | '/dashboard/system-watch'
     | '/dashboard'
+    | '/provider'
     | '/dashboard/requests/$requestId'
     | '/dashboard/requests'
   id:
@@ -274,6 +283,7 @@ export interface FileRouteTypes {
     | '/dashboard/messages'
     | '/dashboard/system-watch'
     | '/dashboard/'
+    | '/provider/'
     | '/dashboard/requests/$requestId'
     | '/dashboard/requests/'
   fileRoutesById: FileRoutesById
@@ -287,7 +297,7 @@ export interface RootRouteChildren {
   LiveSupportRoute: typeof LiveSupportRoute
   LoginRoute: typeof LoginRoute
   PricingRoute: typeof PricingRoute
-  ProviderRoute: typeof ProviderRoute
+  ProviderRoute: typeof ProviderRouteWithChildren
   ProvidersRoute: typeof ProvidersRoute
   ResourcesRoute: typeof ResourcesRoute
   SignupRoute: typeof SignupRoute
@@ -430,6 +440,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardSystemWatchRouteImport
       parentRoute: typeof DashboardRoute
     }
+    '/provider/': {
+      id: '/provider/'
+      path: '/'
+      fullPath: '/provider/'
+      preLoaderRoute: typeof ProviderIndexRouteImport
+      parentRoute: typeof ProviderRoute
+    }
     '/dashboard/requests/': {
       id: '/dashboard/requests/'
       path: '/requests'
@@ -471,6 +488,18 @@ const DashboardRouteWithChildren = DashboardRoute._addFileChildren(
   DashboardRouteChildren,
 )
 
+interface ProviderRouteChildren {
+  ProviderIndexRoute: typeof ProviderIndexRoute
+}
+
+const ProviderRouteChildren: ProviderRouteChildren = {
+  ProviderIndexRoute: ProviderIndexRoute,
+}
+
+const ProviderRouteWithChildren = ProviderRoute._addFileChildren(
+  ProviderRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DashboardRoute: DashboardRouteWithChildren,
@@ -480,7 +509,7 @@ const rootRouteChildren: RootRouteChildren = {
   LiveSupportRoute: LiveSupportRoute,
   LoginRoute: LoginRoute,
   PricingRoute: PricingRoute,
-  ProviderRoute: ProviderRoute,
+  ProviderRoute: ProviderRouteWithChildren,
   ProvidersRoute: ProvidersRoute,
   ResourcesRoute: ResourcesRoute,
   SignupRoute: SignupRoute,
