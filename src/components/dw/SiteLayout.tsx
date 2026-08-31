@@ -20,17 +20,17 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-50 bg-ink">
-      <div className="dw-container flex h-16 items-center justify-between">
-        <Link to="/" className="text-[19px] font-bold tracking-tight text-white">
+      <div className="dw-container flex h-16 items-center justify-between lg:h-14">
+        <Link to="/" className="text-[17px] font-bold tracking-tight text-white">
           DevWork
         </Link>
 
-        <nav className="hidden items-center gap-7 lg:flex">
+        <nav className="hidden items-center gap-5 lg:flex xl:gap-6">
           {NAV.map((item) => (
             <Link
               key={item.to}
               to={item.to}
-              className="text-[13.5px] text-white/70 transition-colors hover:text-white"
+              className="text-[12.5px] text-white/70 transition-colors hover:text-white"
               activeProps={{ className: "text-white" }}
             >
               {item.label}

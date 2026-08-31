@@ -108,19 +108,19 @@ function Home() {
     <SiteLayout>
       {/* HERO */}
       <section className="border-b border-hairline bg-canvas">
-        <div className="dw-container grid items-start gap-12 py-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.32fr)] lg:gap-14 lg:py-20">
-          <div className="lg:pt-8">
+        <div className="dw-container grid items-start gap-10 py-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.32fr)] lg:gap-11 lg:py-14">
+          <div className="lg:pt-6">
             <Eyebrow>Technical workforce &amp; engineering capacity</Eyebrow>
-            <h1 className="mt-6 text-[38px] font-bold leading-[1.04] sm:text-[52px]">
+            <h1 className="mt-5 text-[34px] font-bold leading-[1.05] sm:text-[44px]">
               Technical problems.
               <br />
               <span className="text-violet">Solved,</span> not staffed.
             </h1>
-            <p className="mt-6 max-w-md text-[16px] leading-[1.65] text-muted-foreground">
+            <p className="mt-5 max-w-md text-[15px] leading-[1.6] text-muted-foreground">
               You describe what you need done. DevWork routes, manages, and delivers the right
               technical expertise—fast.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-7 flex flex-wrap gap-3">
               <BtnLink to="/get-started" variant="primary" size="lg">
                 Submit a Request <ArrowRight className="h-4 w-4" />
               </BtnLink>
@@ -128,7 +128,7 @@ function Home() {
                 How It Works <Play className="h-4 w-4" />
               </BtnLink>
             </div>
-            <div className="mt-11 grid gap-6 sm:grid-cols-3">
+            <div className="mt-9 grid gap-5 sm:grid-cols-3">
               {TRUST.map(({ icon: Icon, lines }) => (
                 <div key={lines[0]} className="flex items-start gap-3">
                   <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-violet-soft">
@@ -145,10 +145,10 @@ function Home() {
           </div>
 
           {/* Request status panel */}
-          <div className="rounded-2xl border border-hairline bg-card p-5 shadow-panel sm:p-7">
+          <div className="rounded-2xl border border-hairline bg-card p-5 shadow-panel sm:p-6">
             <div className="flex items-start justify-between gap-4">
               <div>
-                <h2 className="text-[19px] font-bold leading-snug">{req.title}</h2>
+                <h2 className="text-[17.5px] font-bold leading-snug">{req.title}</h2>
                 <p className="mt-1 text-[12.5px] text-muted-foreground">Request ID: {req.id}</p>
               </div>
               <span className="dw-eyebrow shrink-0 rounded-full bg-violet-soft px-2.5 py-1 text-violet">
@@ -156,13 +156,13 @@ function Home() {
               </span>
             </div>
 
-            <div className="mt-7 overflow-x-auto pb-1">
+            <div className="mt-6 overflow-x-auto pb-1">
               <div className="min-w-[520px]">
                 <Stepper request={req} />
               </div>
             </div>
 
-            <div className="mt-7 grid gap-4 md:grid-cols-3">
+            <div className="mt-6 grid gap-3.5 md:grid-cols-3">
               <div className="rounded-xl border border-hairline">
                 <p className="px-4 pt-3.5 text-[13px] font-semibold">What We&apos;re Doing</p>
                 <div className="px-4 pb-3.5 pt-3">
@@ -368,7 +368,7 @@ function Home() {
                 </div>
               ))}
             </div>
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-7 flex flex-wrap gap-3">
               <BtnLink to="/providers" variant="outline" size="md">
                 For Providers
               </BtnLink>
