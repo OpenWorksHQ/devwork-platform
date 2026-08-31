@@ -256,7 +256,7 @@ function Home() {
       </section>
 
       {/* BLACK AUDIENCE BAND */}
-      <section className="bg-background pt-14 lg:pt-16">
+      <section className="bg-background pt-12 lg:pt-10">
         <div className="dw-container">
           <div className="rounded-2xl bg-ink px-6 py-10 lg:px-12 lg:py-12">
             <h2 className="text-center text-[22px] font-bold text-white">
