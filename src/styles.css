@@ -155,13 +155,14 @@
 
 @utility dw-container {
   width: 100%;
-  max-width: 1280px;
+  max-width: 1180px;
   margin-inline: auto;
   padding-inline: 1.25rem;
   @media (width >= 1024px) {
-    padding-inline: 2rem;
+    padding-inline: 1.75rem;
   }
 }
+
 
 @utility dw-eyebrow {
   font-size: 0.6875rem;
