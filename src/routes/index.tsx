@@ -108,7 +108,7 @@ function Home() {
     <SiteLayout>
       {/* HERO */}
       <section className="border-b border-hairline bg-canvas">
-        <div className="dw-container grid items-start gap-10 py-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.34fr)] lg:gap-9 lg:py-14">
+        <div className="dw-container grid items-start gap-10 py-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.34fr)] lg:gap-9 lg:pb-9 lg:pt-14">
           <div className="lg:pt-8">
             <Eyebrow>Technical workforce &amp; engineering capacity</Eyebrow>
             <h1 className="mt-5 text-[34px] font-bold leading-[1.16] sm:text-[45px]">
@@ -145,7 +145,7 @@ function Home() {
           </div>
 
           {/* Request status panel */}
-          <div className="rounded-2xl border border-hairline bg-card p-5 shadow-panel sm:p-7">
+          <div className="rounded-2xl border border-hairline bg-card p-5 shadow-panel sm:p-6">
 
             <div className="flex items-start justify-between gap-4">
               <div>
@@ -157,13 +157,13 @@ function Home() {
               </span>
             </div>
 
-            <div className="mt-6 overflow-x-auto pb-1">
+            <div className="mt-5 overflow-x-auto pb-1">
               <div className="min-w-[520px]">
                 <Stepper request={req} />
               </div>
             </div>
 
-            <div className="mt-6 grid gap-3.5 md:grid-cols-3">
+            <div className="mt-5 grid gap-3.5 md:grid-cols-3">
               <div className="rounded-xl border border-hairline">
                 <p className="px-4 pt-3.5 text-[13px] font-semibold">What We&apos;re Doing</p>
                 <div className="px-4 pb-3.5 pt-3">
@@ -236,7 +236,7 @@ function Home() {
               </div>
             </div>
 
-            <div className="mt-6 flex flex-wrap items-center gap-3">
+            <div className="mt-5 flex flex-wrap items-center gap-3">
               <Link
                 to="/dashboard/requests/$requestId"
                 params={{ requestId: req.id }}
@@ -258,11 +258,11 @@ function Home() {
       {/* BLACK AUDIENCE BAND */}
       <section className="bg-background pt-12 lg:pt-10">
         <div className="dw-container">
-          <div className="rounded-2xl bg-ink px-6 py-10 lg:px-12 lg:py-12">
+          <div className="rounded-2xl bg-ink px-6 py-9 lg:px-12 lg:py-8">
             <h2 className="text-center text-[22px] font-bold text-white">
               Built for every kind of user
             </h2>
-            <div className="mt-9 grid gap-8 md:grid-cols-3 md:gap-0">
+            <div className="mt-7 grid gap-8 md:grid-cols-3 md:gap-0">
               {AUDIENCES.map(({ icon: Icon, title, body, to }, i) => (
                 <div
                   key={title}
@@ -291,10 +291,10 @@ function Home() {
       </section>
 
       {/* HOW DEVWORK WORKS */}
-      <section className="bg-background py-16 lg:py-20">
+      <section className="bg-background py-16 lg:pb-20 lg:pt-12">
         <div className="dw-container">
           <SectionHeading eyebrow="How DevWork works" title="From request to resolution." />
-          <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:flex lg:items-start lg:gap-0">
+          <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:flex lg:items-start lg:gap-0">
             {STEPS.map(({ icon: Icon, title, body }, i) => (
               <div key={title} className="flex flex-1 items-start lg:contents">
                 <div className="flex flex-1 flex-col items-center px-2 text-center">
