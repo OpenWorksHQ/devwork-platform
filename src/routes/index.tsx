@@ -108,27 +108,27 @@ function Home() {
     <SiteLayout>
       {/* HERO */}
       <section className="border-b border-hairline bg-canvas">
-        <div className="dw-container grid items-start gap-10 py-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.32fr)] lg:gap-11 lg:py-14">
-          <div className="lg:pt-6">
+        <div className="dw-container grid items-start gap-10 py-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.34fr)] lg:gap-9 lg:py-14">
+          <div className="lg:pt-8">
             <Eyebrow>Technical workforce &amp; engineering capacity</Eyebrow>
-            <h1 className="mt-5 text-[34px] font-bold leading-[1.05] sm:text-[44px]">
+            <h1 className="mt-5 text-[34px] font-bold leading-[1.16] sm:text-[45px]">
               Technical problems.
               <br />
               <span className="text-violet">Solved,</span> not staffed.
             </h1>
-            <p className="mt-5 max-w-md text-[15px] leading-[1.6] text-muted-foreground">
+            <p className="mt-6 max-w-[380px] text-[15.5px] leading-[1.7] text-muted-foreground">
               You describe what you need done. DevWork routes, manages, and delivers the right
               technical expertise—fast.
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
-              <BtnLink to="/get-started" variant="primary" size="lg">
+              <BtnLink to="/get-started" variant="primary" size="lg" className="h-[41px] px-5 text-sm">
                 Submit a Request <ArrowRight className="h-4 w-4" />
               </BtnLink>
-              <BtnLink to="/how-it-works" variant="outline" size="lg">
+              <BtnLink to="/how-it-works" variant="outline" size="lg" className="h-[41px] px-5 text-sm">
                 How It Works <Play className="h-4 w-4" />
               </BtnLink>
             </div>
-            <div className="mt-9 grid gap-5 sm:grid-cols-3">
+            <div className="mt-10 grid gap-5 sm:grid-cols-3">
               {TRUST.map(({ icon: Icon, lines }) => (
                 <div key={lines[0]} className="flex items-start gap-3">
                   <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-violet-soft">
@@ -145,7 +145,8 @@ function Home() {
           </div>
 
           {/* Request status panel */}
-          <div className="rounded-2xl border border-hairline bg-card p-5 shadow-panel sm:p-6">
+          <div className="rounded-2xl border border-hairline bg-card p-5 shadow-panel sm:p-7">
+
             <div className="flex items-start justify-between gap-4">
               <div>
                 <h2 className="text-[17.5px] font-bold leading-snug">{req.title}</h2>
