@@ -108,7 +108,7 @@ function Home() {
     <SiteLayout>
       {/* HERO */}
       <section className="border-b border-hairline bg-canvas">
-        <div className="dw-container grid items-start gap-10 py-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.34fr)] lg:gap-9 lg:pb-9 lg:pt-14">
+        <div className="dw-container grid items-start gap-10 py-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.34fr)] lg:gap-9 lg:pb-6 lg:pt-14">
           <div className="lg:pt-8">
             <Eyebrow>Technical workforce &amp; engineering capacity</Eyebrow>
             <h1 className="mt-5 text-[34px] font-bold leading-[1.16] sm:text-[45px]">
@@ -172,13 +172,13 @@ function Home() {
                     {req.category} &nbsp;/&nbsp; {req.subcategory}
                   </p>
                 </div>
-                <div className="flex items-center justify-between border-t border-hairline px-4 py-3">
+                <div className="flex items-center justify-between border-t border-hairline px-4 py-2.5">
                   <span className="text-[12.5px] text-muted-foreground">Complexity</span>
                   <span className="flex items-center gap-1.5 text-[12.5px] font-medium">
                     <Dot tone="warning" /> {req.complexity}
                   </span>
                 </div>
-                <div className="flex items-center justify-between border-t border-hairline px-4 py-3">
+                <div className="flex items-center justify-between border-t border-hairline px-4 py-2.5">
                   <span className="text-[12.5px] text-muted-foreground">Risk Level</span>
                   <span className="flex items-center gap-1.5 text-[12.5px] font-medium">
                     <Dot tone="success" /> {req.risk}
@@ -195,7 +195,7 @@ function Home() {
                     <p className="text-[12px] text-muted-foreground">{req.provider.role}</p>
                   </div>
                 </div>
-                <p className="mt-5 text-[12px] text-muted-foreground">Oversight</p>
+                <p className="mt-4 text-[12px] text-muted-foreground">Oversight</p>
                 <div className="mt-2 flex items-center gap-3">
                   <Avatar initials="DW" />
                   <div>
@@ -236,7 +236,7 @@ function Home() {
               </div>
             </div>
 
-            <div className="mt-5 flex flex-wrap items-center gap-3">
+            <div className="mt-4 flex flex-wrap items-center gap-3">
               <Link
                 to="/dashboard/requests/$requestId"
                 params={{ requestId: req.id }}
@@ -256,13 +256,13 @@ function Home() {
       </section>
 
       {/* BLACK AUDIENCE BAND */}
-      <section className="bg-background pt-12 lg:pt-10">
+      <section className="bg-background pt-12 lg:pt-4">
         <div className="dw-container">
-          <div className="rounded-2xl bg-ink px-6 py-9 lg:px-12 lg:py-8">
+          <div className="rounded-2xl bg-ink px-6 py-9 lg:px-12 lg:py-6">
             <h2 className="text-center text-[22px] font-bold text-white">
               Built for every kind of user
             </h2>
-            <div className="mt-7 grid gap-8 md:grid-cols-3 md:gap-0">
+            <div className="mt-5 grid gap-8 md:grid-cols-3 md:gap-0">
               {AUDIENCES.map(({ icon: Icon, title, body, to }, i) => (
                 <div
                   key={title}
@@ -275,10 +275,10 @@ function Home() {
                   <Icon className="h-7 w-7 shrink-0 text-violet" strokeWidth={1.6} />
                   <div>
                     <p className="text-[15px] font-semibold text-white">{title}</p>
-                    <p className="mt-2 text-[13px] leading-[1.55] text-white/55">{body}</p>
+                    <p className="mt-1.5 text-[13px] leading-[1.55] text-white/55">{body}</p>
                     <Link
                       to={to}
-                      className="mt-3 inline-flex items-center gap-1.5 text-[13px] font-medium text-violet hover:underline"
+                      className="mt-2.5 inline-flex items-center gap-1.5 text-[13px] font-medium text-violet hover:underline"
                     >
                       Learn more <ArrowRight className="h-3.5 w-3.5" />
                     </Link>
